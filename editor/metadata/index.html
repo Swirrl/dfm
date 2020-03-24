@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container">
@@ -52,9 +54,10 @@
                 <div class="form-group row pb-1">
                     <label for="input" class="col-sm-2 col-form-label">Input datasets</label>
                     <div class="col-sm-8">
-                        <input id="input" type="text" class="form-control">
+                        <input id="input" type="text" class="form-control" readonly>
                     </div>
-                    <button type="submit" class="btn btn-primary mb-2">Add/edit</button>
+                    <a role="button" id="dependencies" href="dependencies/"
+                        class="btn btn-primary mb-2 text-white">Add/edit</a>
                 </div>
             </form>
             <h2 class="pb-3">Usage and licencing</h2>
@@ -84,9 +87,12 @@
 </body>
 <script>
     let URL = window.location.href
-    let dataset = URL.split("?id=")[1]
-    console.log(dataset)
+    let parameters = URL.split("?id=")[1]
+    let newInputDataset = parameters.split("&")[1]
+    let dataset = parameters.split("&")[0]
+    newInputDataset = parameters.split("=")[1]
     if (dataset != 0) {
+        document.getElementById("dependencies").href = "dependencies/index.html?id=" + dataset
         d3.csv('/input/data.csv', function (input) {
             let data = input;
             let dataset = data.find(findDataset)
@@ -100,13 +106,18 @@
             } else {
                 document.getElementById("pia").value = "No"
             }
+            if (newInputDataset != 0) {
+                document.getElementById("input").value = newInputDataset + "," + dataset.uses
+            }
         });
     } else {
         document.getElementById("title").removeAttribute('readonly')
+        document.getElementById("dependencies").classList.add('disabled')
         document.getElementById("mainTitle").innerHTML = "Create new dataset"
     }
     findDataset = (input) => {
         return input.datasetID === dataset;
     }
 </script>
+
 </html>

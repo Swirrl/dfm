@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container">
@@ -27,10 +29,12 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Create/Edit dataset</li>
+                        <li class="breadcrumb-item"><a href="../../">Create/Edit dataset</a></li>
+                        <li class="breadcrumb-item"><a href="../">Edit metadata</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Select datasets</li>
                     </ol>
                 </nav>
-                <h1 class="display-4">Create/Edit dataset</h1>
+                <h1 class="display-4" id="mainTitle"></h1>
                 <p class="lead">Allow you to create a dataset create links to others and define metadata</p>
             </div>
         </div>
@@ -39,27 +43,28 @@
                 <input id='search' type="text" onkeyup="filterList()" class="form-control"
                     placeholder="Search for a dataset" autocomplete="off">
             </div>
-            <ul class="list-group list-group-flush">
-                <li class='list-group-item'>
-                    <h3>
-                        <a href="metadata/index.html?id=">Create new dataset</a>
-                    </h3>
-                </li>
-            </ul>
             <ul id='list' class="list-group list-group-flush"> </ul>
         </div>
     </main>
 </body>
 <script>
-    d3.csv('input/data.csv', function (input) {
+
+    let URL = window.location.href
+    let dataset = URL.split("?id=")[1]
+    console.log(dataset)
+    
+    if (dataset != 0) {
+    d3.csv('/input/data.csv', function (input) {
         let data = input;
+        let dataset = data.find(findDataset)
         for (i = 0; i < data.length; i++) {
             document.getElementById("list").innerHTML +=
-                "<li class='list-group-item' style='font-size:26px' id='listItem'><a href='metadata/index.html?id="+data[i]
-                .datasetID+"&new='>" + data[i]
-                .datasetName + "</a></li>"
+                "<li class='list-group-item' style='font-size:26px' id='listItem'><a href='../index.html?id=" + 
+                dataset.datasetID + "&new="+ data[i].datasetID +"'>" + data[i].datasetName + "</a></li>"
+                    document.getElementById("mainTitle").innerHTML = "Select datasets used by " + dataset.datasetName
         }
     });
+}
 
     function filterList() {
         // Declare variables
@@ -79,6 +84,11 @@
                 li[i].style.display = "none";
             }
         }
+    }
+
+
+    findDataset = (input) => {
+        return input.datasetID === dataset;
     }
 </script>
 
