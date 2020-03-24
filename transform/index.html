@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>Data transform</title>
+    <script data-require="d3@3.5.3" data-semver="3.5.3" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js"></script>
+    <script src="/assets/fields.js"></script>
+</head>
+<div id="rdf">
+
+</div>
+
+
+<script>
+    d3.csv('input/data.csv', function (input) {
+        let data = input;
+        processRDF(data)
+    });
+
+    processRDF = (data) => {
+        for (i = 0; i < data.length; i++) {
+            let dataset = data[i];
+            createAllRDF(dataset)
+        }
+        writeAlltoPage()
+    };
+
+    createRDF = (s, p, o) => {
+        let datasetRDF = s + " " + p + " " + o + " . ";
+        return datasetRDF;
+    }
+
+    writeToPage = (input) => {
+        for (i = 0; i < input.length; i++) {
+            document.getElementById("rdf").append(input[i])
+        }
+    }
+</script>
+
+</html>
