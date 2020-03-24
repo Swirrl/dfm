@@ -42,7 +42,7 @@
             <ul class="list-group list-group-flush">
                 <li class='list-group-item'>
                     <h3>
-                        <a href="/metadata/index.html?id=">Create new dataset</a>
+                        <a href="metadata/index.html?id=">Create new dataset</a>
                     </h3>
                 </li>
             </ul>
@@ -55,7 +55,7 @@
         let data = input;
         for (i = 0; i < data.length; i++) {
             document.getElementById("list").innerHTML +=
-                "<li class='list-group-item' style='font-size:26px' id='listItem'><a href='/metadata/index.html?id="+data[i]
+                "<li class='list-group-item' style='font-size:26px' id='listItem'><a href='metadata/index.html?id="+data[i]
                 .datasetID+"'>" + data[i]
                 .datasetName + "</a></li>"
         }
