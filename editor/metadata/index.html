@@ -93,7 +93,7 @@
     newInputDataset = parameters.split("=")[1]
     if (dataset != 0) {
         document.getElementById("dependencies").href = "dependencies/index.html?id=" + dataset
-        d3.csv('/input/data.csv', function (input) {
+        d3.csv('../input/data.csv', function (input) {
             let data = input;
             let dataset = data.find(findDataset)
             document.getElementById("mainTitle").innerHTML = "Edit metadata: " + dataset.datasetName
