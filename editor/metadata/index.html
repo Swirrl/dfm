@@ -1,0 +1,112 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>DFM Editor</title>
+    <script data-require="d3@3.5.3" data-semver="3.5.3" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://environment.data.gov.uk/bwq/profiles/images/logo/ea-logo-master-dark-plain.svg"
+                    height="60" alt="">
+            </a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <h3 class="text-white">Data Flow Mapping</h3>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main role="main" class="pt-5">
+        <div class="jumbotron">
+            <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="../">Create/Edit dataset</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit metadata</li>
+                    </ol>
+                </nav>
+                <h1 class="display-4" id="mainTitle"></h1>
+            </div>
+        </div>
+        <div class="container">
+            <h2 class="pb-3">About this dataset</h2>
+            <form>
+                <div class="form-group row pb-1">
+                    <label for="datasetTitle" class="col-sm-2 col-form-label">Dataset title</label>
+                    <div class="col-sm-10">
+                        <input id="title" type="text" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="form-group row pb-1">
+                    <label for="inputOwner" class="col-sm-2 col-form-label">Owner</label>
+                    <div class="col-sm-10">
+                        <input id="owner" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row pb-1">
+                    <label for="input" class="col-sm-2 col-form-label">Input datasets</label>
+                    <div class="col-sm-8">
+                        <input id="input" type="text" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Add/edit</button>
+                </div>
+            </form>
+            <h2 class="pb-3">Usage and licencing</h2>
+            <form>
+                <div class="form-group">
+                    <label for="licence">Licence</label>
+                    <select class="form-control" id="licence">
+                        <option></option>
+                        <option>http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</option>
+                        <option>https://choosealicense.com/licenses/apache-2.0/</option>
+                        <option>https://choosealicense.com/licenses/gpl-3.0/</option>
+                        <option>https://choosealicense.com/licenses/mpl-2.0/</option>
+                        <option>https://choosealicense.com/licenses/mit/</option>
+                    </select>
+                </div>
+                <div class="form-group row pb-1">
+                    <label for="pia" class="col-sm-2 col-form-label">Contains Personally identifiable
+                        information</label>
+                    <div class="col-sm-10">
+                        <input id="pia" type="text" class="form-control">
+                    </div>
+                </div>
+                <a role="button" href="../" class="btn btn-primary mb-2 btn-lg">Save</a><a href="../"> Cancel</a>
+            </form>
+        </div>
+    </main>
+</body>
+<script>
+    let URL = window.location.href
+    let dataset = URL.split("?id=")[1]
+    console.log(dataset)
+    if (dataset != 0) {
+        d3.csv('/input/data.csv', function (input) {
+            let data = input;
+            let dataset = data.find(findDataset)
+            document.getElementById("mainTitle").innerHTML = "Edit metadata: " + dataset.datasetName
+            document.getElementById("title").value = dataset.datasetName
+            document.getElementById("owner").value = dataset.ownerName
+            document.getElementById("input").value = dataset.uses
+            document.getElementById("licence").value = dataset.licence
+            if (dataset.pia === "y") {
+                document.getElementById("pia").value = "Yes"
+            } else {
+                document.getElementById("pia").value = "No"
+            }
+        });
+    } else {
+        document.getElementById("title").removeAttribute('readonly')
+        document.getElementById("mainTitle").innerHTML = "Create new dataset"
+    }
+    findDataset = (input) => {
+        return input.datasetID === dataset;
+    }
+</script>
+</html>

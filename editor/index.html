@@ -1,0 +1,87 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>DFM Editor</title>
+    <script data-require="d3@3.5.3" data-semver="3.5.3" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://environment.data.gov.uk/bwq/profiles/images/logo/ea-logo-master-dark-plain.svg"
+                    height="60" alt="">
+            </a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <h3 class="text-white">Data Flow Mapping</h3>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main role="main" class="pt-5">
+        <div class="jumbotron">
+            <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Create/Edit dataset</li>
+                    </ol>
+                </nav>
+                <h1 class="display-4">Create/Edit dataset</h1>
+                <p class="lead">Allow you to create a dataset create links to others and define metadata</p>
+            </div>
+        </div>
+        <div class="container">
+            <div style='font-size:26px' class="input-group mb-3">
+                <input id='search' type="text" onkeyup="filterList()" class="form-control"
+                    placeholder="Search for a dataset" autocomplete="off">
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class='list-group-item'>
+                    <h3>
+                        <a href="/metadata/index.html?id=">Create new dataset</a>
+                    </h3>
+                </li>
+            </ul>
+            <ul id='list' class="list-group list-group-flush"> </ul>
+        </div>
+    </main>
+</body>
+<script>
+    d3.csv('input/data.csv', function (input) {
+        let data = input;
+        for (i = 0; i < data.length; i++) {
+            document.getElementById("list").innerHTML +=
+                "<li class='list-group-item' style='font-size:26px' id='listItem'><a href='/metadata/index.html?id="+data[i]
+                .datasetID+"'>" + data[i]
+                .datasetName + "</a></li>"
+        }
+
+    });
+
+
+    function filterList() {
+        // Declare variables
+        let input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById('search');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("list");
+        li = ul.getElementsByTagName('li');
+
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+</html>
