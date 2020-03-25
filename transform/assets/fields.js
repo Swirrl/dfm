@@ -5,9 +5,11 @@ let owner = [];
 let licence = [];
 let personalInfo = [];
 let ownerName = [];
+let datasetID = [];
 
 createAllRDF = (dataset) => {
     createDatasetRDF(datasets, dataset);
+    createDatasetIDRDF(datasetID, dataset);
     createUsedRDF(used, dataset);
     createUsesRDF(uses, dataset);
     createOwnerRDF(owner, dataset);
@@ -18,6 +20,7 @@ createAllRDF = (dataset) => {
 
 writeAlltoPage = () => {
     writeToPage(datasets)
+    writeToPage(datasetID)
     writeToPage(used)
     writeToPage(uses)
     writeToPage(owner)
@@ -30,6 +33,15 @@ createDatasetRDF = (array, input) => {
     let s = '<' + input.datasetID + '>';
     let p = "<name>";
     let o = '"' + input.datasetName + '"';
+    let RDF = createRDF(s, p, o);
+    array.push(RDF);
+    return array;
+}
+
+createDatasetIDRDF = (array, input) => {
+    let s = '<' + input.datasetID + '>';
+    let p = "<rdf:type>";
+    let o = '<dataset>';
     let RDF = createRDF(s, p, o);
     array.push(RDF);
     return array;
@@ -80,10 +92,10 @@ createLicenceRDF = (array, input) => {
 }
 
 createPersonalInfoRDF = (array, input) => {
-    if (input.pia != "") {
+    if (input.pii != "") {
         let s = '<' + input.datasetID + '>';
-        let p = "<pia>";
-        let o = '<' + input.pia + '>';
+        let p = "<pii>";
+        let o = '<' + input.pii + '>';
         let RDF = createRDF(s, p, o);
         array.push(RDF);
         return array;

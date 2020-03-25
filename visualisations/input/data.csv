@@ -1,0 +1,37 @@
+s,o
+http://api.stardog.com/dataset2,http://api.stardog.com/dataset1
+http://api.stardog.com/dataset3,http://api.stardog.com/dataset1
+http://api.stardog.com/dataset1,Robs parent dataset
+http://api.stardog.com/dataset1,http://api.stardog.com/dataset2
+http://api.stardog.com/dataset3,http://api.stardog.com/dataset2
+http://api.stardog.com/dataset2,Robs child dataset
+http://api.stardog.com/dataset1,http://api.stardog.com/dataset3
+http://api.stardog.com/dataset3,Robs other child dataset
+http://api.stardog.com/dataset1,http://api.stardog.com/2
+http://api.stardog.com/dataset2,http://api.stardog.com/1
+http://api.stardog.com/dataset3,http://api.stardog.com/1
+http://api.stardog.com/dataset4,http://api.stardog.com/1
+http://api.stardog.com/dataset5,http://api.stardog.com/1
+http://api.stardog.com/dataset1,http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+http://api.stardog.com/dataset2,https://choosealicense.com/licenses/apache-2.0/
+http://api.stardog.com/dataset3,https://choosealicense.com/licenses/apache-2.0/
+http://api.stardog.com/dataset4,https://choosealicense.com/licenses/apache-2.0/
+http://api.stardog.com/dataset5,https://choosealicense.com/licenses/apache-2.0/
+http://api.stardog.com/dataset1,http://api.stardog.com/n
+http://api.stardog.com/dataset1,http://api.stardog.com/n
+http://api.stardog.com/dataset3,http://api.stardog.com/n
+http://api.stardog.com/dataset3,http://api.stardog.com/n
+http://api.stardog.com/dataset5,http://api.stardog.com/n
+http://api.stardog.com/dataset2,http://api.stardog.com/y
+http://api.stardog.com/dataset2,http://api.stardog.com/y
+http://api.stardog.com/dataset4,http://api.stardog.com/y
+http://api.stardog.com/2,Rob
+http://api.stardog.com/1,Not Rob
+http://api.stardog.com/dataset1,http://api.stardog.com/dataset
+http://api.stardog.com/dataset2,http://api.stardog.com/dataset
+http://api.stardog.com/dataset3,http://api.stardog.com/dataset
+http://api.stardog.com/dataset4,http://api.stardog.com/dataset
+http://api.stardog.com/dataset5,http://api.stardog.com/dataset
+http://api.stardog.com/dataset5,http://api.stardog.com/dataset4
+http://api.stardog.com/dataset4,Robs PII dataset
+http://api.stardog.com/dataset5,Robs Non PII dataset

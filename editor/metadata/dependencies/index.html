@@ -51,8 +51,6 @@
 
     let URL = window.location.href
     let dataset = URL.split("?id=")[1]
-    console.log(dataset)
-    
     if (dataset != 0) {
     d3.csv('../../input/data.csv', function (input) {
         let data = input;

@@ -1,0 +1,54 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>DFM Editor</title>
+    <script data-require="d3@3.5.3" data-semver="3.5.3" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://environment.data.gov.uk/bwq/profiles/images/logo/ea-logo-master-dark-plain.svg"
+                    height="60" alt="">
+            </a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <h3 class="text-white">Visualise data</h3>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main role="main" class="pt-5">
+        <div class="jumbotron">
+            <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Visualise data</li>
+                    </ol>
+                </nav>
+                <h1 class="display-4">Visualise data</h1>
+                <p class="lead">Select a dataset and explore its connections</p>
+            </div>
+        </div>
+        <div class="container">
+
+        </div>
+    </main>
+</body>
+<script>
+    d3.csv('input/data.csv', function (input) {
+        let data = input;
+        console.log(data)
+
+    });
+
+</script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/gantt/modules/networkgraph.js"></script>
+
+</html>
