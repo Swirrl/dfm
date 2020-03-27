@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Visualise data</title>
+    <title>Understanding and visualisation</title>
     <script data-require="d3@3.5.3" data-semver="3.5.3" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js"></script>
 
     <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -20,24 +20,82 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="../">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Visualise data</li>
+                        <li class="breadcrumb-item active" aria-current="page">Understanding and visualisation</li>
                     </ol>
                 </nav>
-                <h1 class="display-4">Visualise data</h1>
-                <p class="lead">Select a dataset and explore its connections</p>
+                <h1 class="display-3">Understanding and visualisation</h1>
+                <p class="lead">Examples of how we can query and understand the data, using the same dummy dataset.</p>
             </div>
         </div>
         <div class="container">
-            <h2>All datasets and links between</h2>
             <div class="row">
+                <div class="col-md-12">
+                    <h2>Exmaple 1: Understanding connections</h2>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h3>
+                                What datasets use another dataset
+                            </h3>
+                            <code>SELECT * WHERE { ?s :usedBy ?o . }</code>
+                            <img src="input/datasetuses.png" style="width: 70%;">
+                        </div>
+                    </div>
+                    <div class="row pt-5">
+                        <div class="col-md-12">
+                            <h2>Exmaple 2: Understanding the data</h2>
+                            <p>
+                                For example: <strong>What datasets contain Personal information or have it in their dependencies?</strong>
+                            </p>
+                            <p>The following example shows how the query can be built up to answer the question.</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>
+                                        Step 1: Datasets that contain personal info
+                                    </p>
+                                    </p>
+                                    <code>select ?dataset <br>where<br> {<br>?dataset ?p :dataset .<br>
+                                        ?dataset :pii :y .<br>
+                                        }</code></p>
+                                    <img src="input/contain-pii.png" style="width: 100%;">
+                                </div>
+                                <div class="col-md-6">
+                                    <p>
+                                        Step 2: Datasets that use datasets that contain personal info
+                                    </p>
+                                    </p>
+                                    <code>select ?dataset<br>
 
-                <div class="col-md-4">
-                    <p>
-                        Displays some things
-                    </p>
-                </div>
-                <div class="col-md-8">
+                                        where <br>{<br>
+                                        ?dataset ?p :dataset .<br>
+                                        ?dataset :uses ?uses.<br>
+                                        ?uses :pii :y .<br>
+                                        }</code>
+                                    </p>
+                                    <img src="input/useddatasetpii.png" style="width: 70%;">
+                                </div>
+                            </div>
+                            <div class="row pt-3">
+                                <div class="col-md-8">
+                                    <p>
+                                        Step 3: Combination of both queries
+                                    </p>
+                                    <p>
+                                        <code>select ?dataset ?uses <br>
 
+                                            where<br> {<br>
+                                            {?dataset ?p :dataset .<br>
+                                            ?dataset :uses ?uses.<br>
+                                            ?uses :pii :y .}<br>
+                                            UNION {
+                                            ?dataset :pii :y .
+                                            } <br>
+                                            }</code>
+                                    </p>
+                                    <img src="input/combined.png" style="width: 80%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
