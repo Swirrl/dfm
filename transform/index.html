@@ -1,20 +1,564 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Data transform</title>
-    <script data-require="d3@3.5.3" data-semver="3.5.3" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js"></script>
+    <script data-require="d3@3.5.3" data-semver="3.5.3" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js">
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="assets/fields.js"></script>
 </head>
-<div id="rdf">
-
-</div>
 
 
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://environment.data.gov.uk/bwq/profiles/images/logo/ea-logo-master-dark-plain.svg"
+                    height="60" alt="">
+            </a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <h3 class="text-white">Data transform</h3>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main role="main" class="pt-5">
+        <div>
+            <div class="jumbotron">
+                <div class="container">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Data transform</li>
+                        </ol>
+                    </nav>
+                    <h1 class="display-4">Data transform</h1>
+                    <p class="lead">Demonstration of data transform</p>
+                </div>
+            </div>
+            <div class="container">
+                <div id="intro" >
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2>Creating some dummy data</h2>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p>Convert this CSV to a simlified RDF</p>
+                        <button onclick="create()">Try it out!</button>
+                    </div>
+                    <div class="col-md-8"style="height: 250px; overflow: scroll;">
+                        <table >
+                            <col class="col0">
+                            <col class="col1">
+                            <col class="col2">
+                            <col class="col3">
+                            <col class="col4">
+                            <col class="col5">
+                            <col class="col6">
+                            <col class="col7">
+                            <tbody>
+                                <tr class="row0">
+                                    <th class="column0 style0 s">datasetID</td>
+                                    <th class="column1 style0 s">datasetName</td>
+                                    <th class="column2 style0 s">licence</td>
+                                    <th class="column3 style0 s">ownerName</td>
+                                    <th class="column4 style0 s">ownerID</td>
+                                    <th class="column5 style0 s">usedBy</td>
+                                    <th class="column6 style0 s">uses</td>
+                                    <th class="column7 style0 s">pii</td>
+                                </tr>
+                                <tr class="row1">
+                                    <td class="column0 style0 s">dataset1</td>
+                                    <td class="column1 style0 s">Dataset title 1</td>
+                                    <td class="column2 style0 s">
+                                        http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5 style0 s">dataset2</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row2">
+                                    <td class="column0 style0 s">dataset1</td>
+                                    <td class="column1 style0 s">Dataset title 1</td>
+                                    <td class="column2 style0 s">
+                                        http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 2</td>
+                                    <td class="column4 style0 n">2</td>
+                                    <td class="column5">&nbsp;</td>
+                                    <td class="column6 style0 s">dataset3</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row3">
+                                    <td class="column0 style0 s">dataset2</td>
+                                    <td class="column1 style0 s">Dataset title 3</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5 style0 s">dataset1</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">y</td>
+                                </tr>
+                                <tr class="row4">
+                                    <td class="column0 style0 s">dataset3</td>
+                                    <td class="column1 style0 s">Dataset title 4</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 2</td>
+                                    <td class="column4 style0 n">2</td>
+                                    <td class="column5 style0 s">dataset1</td>
+                                    <td class="column6 style0 s">dataset2</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row5">
+                                    <td class="column0 style0 s">dataset4</td>
+                                    <td class="column1 style0 s">Dataset title 5</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5">&nbsp;</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">y</td>
+                                </tr>
+                                <tr class="row6">
+                                    <td class="column0 style0 s">dataset5</td>
+                                    <td class="column1 style0 s">Dataset title 6</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 2</td>
+                                    <td class="column4 style0 n">2</td>
+                                    <td class="column5">&nbsp;</td>
+                                    <td class="column6 style0 s">dataset4</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row7">
+                                    <td class="column0 style0 s">dataset6</td>
+                                    <td class="column1 style0 s">Dataset title 7</td>
+                                    <td class="column2 style0 s">
+                                        http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5 style0 s">dataset2</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row8">
+                                    <td class="column0 style0 s">dataset7</td>
+                                    <td class="column1 style0 s">Dataset title 8</td>
+                                    <td class="column2 style0 s">
+                                        http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 2</td>
+                                    <td class="column4 style0 n">2</td>
+                                    <td class="column5">&nbsp;</td>
+                                    <td class="column6 style0 s">dataset3</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row9">
+                                    <td class="column0 style0 s">dataset8</td>
+                                    <td class="column1 style0 s">Dataset title 9</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5 style0 s">dataset1</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">y</td>
+                                </tr>
+                                <tr class="row10">
+                                    <td class="column0 style0 s">dataset9</td>
+                                    <td class="column1 style0 s">Dataset title 10</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 2</td>
+                                    <td class="column4 style0 n">2</td>
+                                    <td class="column5 style0 s">dataset1</td>
+                                    <td class="column6 style0 s">dataset2</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row11">
+                                    <td class="column0 style0 s">dataset10</td>
+                                    <td class="column1 style0 s">Dataset title 11</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5">&nbsp;</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">y</td>
+                                </tr>
+                                <tr class="row12">
+                                    <td class="column0 style0 s">dataset11</td>
+                                    <td class="column1 style0 s">Dataset title 12</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 2</td>
+                                    <td class="column4 style0 n">2</td>
+                                    <td class="column5">&nbsp;</td>
+                                    <td class="column6 style0 s">dataset4</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row13">
+                                    <td class="column0 style0 s">dataset12</td>
+                                    <td class="column1 style0 s">Dataset title 13</td>
+                                    <td class="column2 style0 s">
+                                        http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5 style0 s">dataset2</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row14">
+                                    <td class="column0 style0 s">dataset13</td>
+                                    <td class="column1 style0 s">Dataset title 14</td>
+                                    <td class="column2 style0 s">
+                                        http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 2</td>
+                                    <td class="column4 style0 n">2</td>
+                                    <td class="column5">&nbsp;</td>
+                                    <td class="column6 style0 s">dataset3</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row15">
+                                    <td class="column0 style0 s">dataset14</td>
+                                    <td class="column1 style0 s">Dataset title 15</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5 style0 s">dataset1</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">y</td>
+                                </tr>
+                                <tr class="row16">
+                                    <td class="column0 style0 s">dataset15</td>
+                                    <td class="column1 style0 s">Dataset title 16</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 2</td>
+                                    <td class="column4 style0 n">2</td>
+                                    <td class="column5 style0 s">dataset1</td>
+                                    <td class="column6 style0 s">dataset2</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row17">
+                                    <td class="column0 style0 s">dataset16</td>
+                                    <td class="column1 style0 s">Dataset title 17</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5">&nbsp;</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">y</td>
+                                </tr>
+                                <tr class="row18">
+                                    <td class="column0 style0 s">dataset17</td>
+                                    <td class="column1 style0 s">Dataset title 18</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 2</td>
+                                    <td class="column4 style0 n">2</td>
+                                    <td class="column5">&nbsp;</td>
+                                    <td class="column6 style0 s">dataset4</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row19">
+                                    <td class="column0 style0 s">dataset18</td>
+                                    <td class="column1 style0 s">Dataset title 19</td>
+                                    <td class="column2 style0 s">
+                                        http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5 style0 s">dataset2</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row20">
+                                    <td class="column0 style0 s">dataset19</td>
+                                    <td class="column1 style0 s">Dataset title 20</td>
+                                    <td class="column2 style0 s">
+                                        http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 2</td>
+                                    <td class="column4 style0 n">2</td>
+                                    <td class="column5">&nbsp;</td>
+                                    <td class="column6 style0 s">dataset3</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row21">
+                                    <td class="column0 style0 s">dataset20</td>
+                                    <td class="column1 style0 s">Dataset title 21</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5 style0 s">dataset1</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">y</td>
+                                </tr>
+                                <tr class="row22">
+                                    <td class="column0 style0 s">dataset21</td>
+                                    <td class="column1 style0 s">Dataset title 22</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 2</td>
+                                    <td class="column4 style0 n">2</td>
+                                    <td class="column5 style0 s">dataset1</td>
+                                    <td class="column6 style0 s">dataset2</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row23">
+                                    <td class="column0 style0 s">dataset22</td>
+                                    <td class="column1 style0 s">Dataset title 23</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5">&nbsp;</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">y</td>
+                                </tr>
+                                <tr class="row24">
+                                    <td class="column0 style0 s">dataset23</td>
+                                    <td class="column1 style0 s">Dataset title 24</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 2</td>
+                                    <td class="column4 style0 n">2</td>
+                                    <td class="column5">&nbsp;</td>
+                                    <td class="column6 style0 s">dataset4</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row25">
+                                    <td class="column0 style0 s">dataset24</td>
+                                    <td class="column1 style0 s">Dataset title 25</td>
+                                    <td class="column2 style0 s">
+                                        http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5 style0 s">dataset2</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row26">
+                                    <td class="column0 style0 s">dataset25</td>
+                                    <td class="column1 style0 s">Dataset title 26</td>
+                                    <td class="column2 style0 s">
+                                        http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 2</td>
+                                    <td class="column4 style0 n">2</td>
+                                    <td class="column5">&nbsp;</td>
+                                    <td class="column6 style0 s">dataset3</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row27">
+                                    <td class="column0 style0 s">dataset26</td>
+                                    <td class="column1 style0 s">Dataset title 27</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5 style0 s">dataset1</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">y</td>
+                                </tr>
+                                <tr class="row28">
+                                    <td class="column0 style0 s">dataset27</td>
+                                    <td class="column1 style0 s">Dataset title 28</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 2</td>
+                                    <td class="column4 style0 n">2</td>
+                                    <td class="column5 style0 s">dataset1</td>
+                                    <td class="column6 style0 s">dataset2</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row29">
+                                    <td class="column0 style0 s">dataset28</td>
+                                    <td class="column1 style0 s">Dataset title 29</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5">&nbsp;</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">y</td>
+                                </tr>
+                                <tr class="row30">
+                                    <td class="column0 style0 s">dataset18</td>
+                                    <td class="column1 style0 s">Dataset title 19</td>
+                                    <td class="column2 style0 s">
+                                        http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5 style0 s">dataset6</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row31">
+                                    <td class="column0 style0 s">dataset19</td>
+                                    <td class="column1 style0 s">Dataset title 20</td>
+                                    <td class="column2 style0 s">
+                                        http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 2</td>
+                                    <td class="column4 style0 n">2</td>
+                                    <td class="column5">&nbsp;</td>
+                                    <td class="column6 style0 s">dataset8</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row32">
+                                    <td class="column0 style0 s">dataset20</td>
+                                    <td class="column1 style0 s">Dataset title 21</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5 style0 s">dataset19</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">y</td>
+                                </tr>
+                                <tr class="row33">
+                                    <td class="column0 style0 s">dataset21</td>
+                                    <td class="column1 style0 s">Dataset title 22</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 2</td>
+                                    <td class="column4 style0 n">2</td>
+                                    <td class="column5 style0 s">dataset12</td>
+                                    <td class="column6 style0 s">dataset22</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row34">
+                                    <td class="column0 style0 s">dataset22</td>
+                                    <td class="column1 style0 s">Dataset title 23</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5 style0 s">dataset21</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">y</td>
+                                </tr>
+                                <tr class="row35">
+                                    <td class="column0 style0 s">dataset23</td>
+                                    <td class="column1 style0 s">Dataset title 24</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 2</td>
+                                    <td class="column4 style0 n">2</td>
+                                    <td class="column5">&nbsp;</td>
+                                    <td class="column6 style0 s">dataset14</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row36">
+                                    <td class="column0 style0 s">dataset24</td>
+                                    <td class="column1 style0 s">Dataset title 25</td>
+                                    <td class="column2 style0 s">
+                                        http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5 style0 s">dataset21</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row37">
+                                    <td class="column0 style0 s">dataset25</td>
+                                    <td class="column1 style0 s">Dataset title 26</td>
+                                    <td class="column2 style0 s">
+                                        http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 2</td>
+                                    <td class="column4 style0 n">2</td>
+                                    <td class="column5">&nbsp;</td>
+                                    <td class="column6 style0 s">dataset13</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row38">
+                                    <td class="column0 style0 s">dataset26</td>
+                                    <td class="column1 style0 s">Dataset title 27</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5 style0 s">dataset9</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">y</td>
+                                </tr>
+                                <tr class="row39">
+                                    <td class="column0 style0 s">dataset27</td>
+                                    <td class="column1 style0 s">Dataset title 28</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 2</td>
+                                    <td class="column4 style0 n">2</td>
+                                    <td class="column5 style0 s">dataset9</td>
+                                    <td class="column6 style0 s">dataset5</td>
+                                    <td class="column7 style0 s">n</td>
+                                </tr>
+                                <tr class="row40">
+                                    <td class="column0 style0 s">dataset28</td>
+                                    <td class="column1 style0 s">Dataset title 29</td>
+                                    <td class="column2 style0 s">https://choosealicense.com/licenses/apache-2.0/
+                                    </td>
+                                    <td class="column3 style0 s">Organisation 1</td>
+                                    <td class="column4 style0 n">1</td>
+                                    <td class="column5">&nbsp;</td>
+                                    <td class="column6">&nbsp;</td>
+                                    <td class="column7 style0 s">y</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+                <div class="row">
+                    
+                    <div class="col-md-6" style="max-height: 500px; overflow: scroll;">
+                        <h3>Output RDF</h3>
+                        <p>This can now be loaded ind a RDF database to be <a href ="../visualisations/">queryied and/or visualised</a>.</p>
+                    </div>
+                    <div class="col-md-6" style="max-height: 500px; overflow: scroll;">
+                        <code id="rdf"></code>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+</body>
 <script>
-    d3.csv('input/data.csv', function (input) {
-        let data = input;
-        processRDF(data)
-    });
+    create = () => {
+        console.log("Herllo")
+        document.getElementById("intro").style.display = "none";
+        d3.csv('input/data.csv', function (input) {
+            let data = input;
+            processRDF(data)
+        });
+    }
 
     processRDF = (data) => {
         for (i = 0; i < data.length; i++) {

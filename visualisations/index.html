@@ -1,12 +1,17 @@
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>DFM Editor</title>
     <script data-require="d3@3.5.3" data-semver="3.5.3" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/gantt/modules/networkgraph.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container">
@@ -35,20 +40,21 @@
             </div>
         </div>
         <div class="container">
+            <h2>All datasets and links between</h2>
+            <div class="row">
 
+                <div class="col-md-4">
+                    <p>
+                        Displays some things
+                    </p>
+                </div>
+                <div class="col-md-8">
+
+                </div>
+            </div>
+        </div>
         </div>
     </main>
 </body>
-<script>
-    d3.csv('input/data.csv', function (input) {
-        let data = input;
-        console.log(data)
-
-    });
-
-</script>
-
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/gantt/modules/networkgraph.js"></script>
 
 </html>
