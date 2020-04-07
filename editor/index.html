@@ -1,75 +1,130 @@
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>DFM Editor</title>
-    <script data-require="d3@3.5.3" data-semver="3.5.3" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js"></script>
+    <title>Simplifying updates</title>
+    <script data-require="d3@3.5.3" data-semver="3.5.3" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js">
+    </script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="assets/fields.js"></script>
 </head>
+
+
 <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"></nav>
     <main role="main">
-        <div class="jumbotron">
+        <div>
+            <div class="jumbotron">
+                <div class="container">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Simplifying updates</li>
+                        </ol>
+                    </nav>
+                    <h1 class="display-3">Simplifying updates</h1>
+                    <p class="lead">.</p>
+                </div>
+            </div>
             <div class="container">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="../">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Create/Edit dataset</li>
-                    </ol>
-                </nav>
-                <h1 class="display-3">Create/Edit dataset</h1>
-                <p class="lead">Allow you to create a dataset create links to others and define metadata</p>
-                <p>NOTE: Data is not saved and prototype is intended to demonstrate steps rather than design, validation
-                    or complete field list that would be needed.</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-8">
+                            <h3>Users and permissions</h3>
+                            <p>The content of the site will need to change over time and it is clear
+                                    that users will benefit from being able to access the latest information. There is also a need
+                                    to ensure each SMP reflects current evidence; supports CG&rsquo;s in monitoring and reporting on
+                                    delivery of SMPs.</p>
+                            <h4>Options: Updates</h4>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="4">
+                                            <p><strong>Increasing complexity </strong><strong>⮕</strong></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p><strong>Data pulled from centralised system</strong></p>
+                                        </td>
+                                        <td>
+                                            <p><strong>Data pulled from multiple locations</strong></p>
+                                        </td>
+                                        <td>
+                                            <p><strong>Limited editorial control</strong></p>
+                                        </td>
+                                        <td>
+                                            <p><strong>Complete editorial control in SMP web application</strong></p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>&nbsp;</p>
+                            <p>Considerations:</p>
+                            <ul>
+                                <li>How immediate do updates need to
+                                        show?</li>
+                                <li>How often will the data change?
+                                </li>
+                                <li>How much of the data changes and needs
+                                        to be directly editable?</li>
+                                <li>Versioning and archiving </li>
+                            </ul>
+                            <h4>Permissions</h4>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="4">
+                                            <p><strong>Increasing complexity </strong><strong>⮕</strong></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p><strong>No direct editing of SMP web application</strong></p>
+                                        </td>
+                                        <td>
+                                            <p><strong>Small number of editors with same permissions</strong></p>
+                                        </td>
+                                        <td>
+                                            <p><strong>Editors limited to editing specific content</strong></p>
+                                            <p><strong>or</strong></p>
+                                            <p><strong>Editors only able to perform certain actions e.g.
+                                                    View/Edit/Preview/Publish&nbsp;</strong></p>
+                                        </td>
+                                        <td>
+                                            <p><strong>Editors limited to editing specific content</strong></p>
+                                            <p><strong>and</strong></p>
+                                            <p><strong>Editors only able to perform certain actions e.g.
+                                                    View/Edit/Preview/Publish</strong></p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>Considerations:</p>
+                            <ul>
+                                <li>Need to consider training of
+                                        users</li>
+                                <li>If users accessing site to make
+                                        changes infrequently, likely to need a lot of support</li>
+                                <li>Need to consider who manages these
+                                        permissions and user accounts</li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h2>Prototype</h2>
+                                <p>
+                                    <a href="prototype">prototype</a>
+                                    NOTE: Data is not saved and prototype is intended to demonstrate steps rather than design, validation or complete field list that would be needed.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="container">
-            <div style='font-size:26px' class="input-group mb-3">
-                <input id='search' type="text" onkeyup="filterList()" class="form-control"
-                    placeholder="Search for a dataset" autocomplete="off">
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class='list-group-item'>
-                    <h3>
-                        <a href="metadata/index.html?id=">Create new dataset</a>
-                    </h3>
-                </li>
-            </ul>
-            <ul id='list' class="list-group list-group-flush"> </ul>
         </div>
     </main>
 </body>
-<script>
-    d3.csv('input/data.csv', function (input) {
-        let data = input;
-        for (i = 0; i < data.length; i++) {
-            document.getElementById("list").innerHTML +=
-                "<li class='list-group-item' style='font-size:26px' id='listItem'><a href='metadata/index.html?id="+data[i]
-                .datasetID+"&new='>" + data[i]
-                .datasetName + "</a></li>"
-        }
-    });
-
-    function filterList() {
-        // Declare variables
-        let input, filter, ul, li, a, i, txtValue;
-        input = document.getElementById('search');
-        filter = input.value.toUpperCase();
-        ul = document.getElementById("list");
-        li = ul.getElementsByTagName('li');
-
-        // Loop through all list items, and hide those who don't match the search query
-        for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByTagName("a")[0];
-            txtValue = a.textContent || a.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = "";
-            } else {
-                li[i].style.display = "none";
-            }
-        }
-    }
-</script>
-
 </html>
