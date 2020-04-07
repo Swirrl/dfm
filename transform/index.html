@@ -12,7 +12,6 @@
     <script src="assets/fields.js"></script>
 </head>
 
-
 <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"></nav>
     <main role="main">
@@ -26,7 +25,8 @@
                         </ol>
                     </nav>
                     <h1 class="display-3">Data, linking and transform</h1>
-                    <p class="lead">Exploration into minimising data required and initial work into if we can transform from current Enterprise Architect files.</p>
+                    <p class="lead">Exploration into minimising data required and initial work into if we can transform
+                        from current Enterprise Architect files.</p>
                 </div>
             </div>
             <div class="container">
@@ -40,36 +40,58 @@
                                 <h3>Detailed process maps</h3>
                                 <p>We were able to extract and model the process maps contained within the data in RDF
                                     and load and query. These seem however to be a large amount of the complexity
-                                    contained within the data and do not seem to be the answer to the aims of this work.
+                                    contained within the data and clearly require a large effort to create and maintain.
                                 </p>
-                                <p>The following image shows an extract from one of these process maps visualised in our RDF
-                                    database (click to expand).</p>
-                                    <a href="image1.html"><img src="assets/process-map.png" style="width:40%" class="img-thumbnail"></a>
+                                <p>The following image shows an extract from one of these process maps visualised in our
+                                    RDF
+                                    database (click to expand).
+                                    <br><a href="image1.html"><img src="assets/process-map.png" style="width:40%"
+                                            class="img-thumbnail"></a>
+                                </p>
+
+                                <p>Whilst these could undoubtedly be useful, they do not seem critical to meet the
+                                    current
+                                    aims of the DFM.
+                                </p>
+                                <p>
+                                    Removing these and focussing more on the metadata of
+                                    the datasets and the connections between them, rather than the process, should
+                                    provide a more streamlined process and whilst meeting the aims of the DFM.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div>
                     <div class="row">
-                        <div class="col-md-8 pt-5">
-                            <h2>Data, linking and transform</h2>
-                            <p>Aims:</p>
+                        <div class="col-md-8 pt-3">
+                            <h2>Creating some dummy data</h2>
+                            <p>In order to allow us to focus on the aims as presented to us we decided to create some
+                                simplified dummy data to:</p>
                             <ul>
-                                <li>Simplify model</li>
-                                <li>Focus on links between datasets</li>
-                                <li>Realistic enough to query</li>
+                                <li>reduce complexity of model</li>
+                                <li>focus on links between datasets</li>
+                                <li>that is realistic enough to query</li>
+                                <li>demonstrate that we should be able to answer lots of questions with much less data
+                                </li>
                             </ul>
+                            <p>We created the data in CSV and then transformed this into RDF (see example below). The
+                                number of metadata field was limited, but extending this to include more is relatively
+                                trivial.</p>
+                            <p>This transformation in reality could be from any consistent data source. </p>
+                            <p>This data was what we then used for exploring the <a href="../editor/">editor</a> and <a href="../visualisations/">visualisation</a> questions.</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 pt-5">
-                            <h3>Creating some dummy data</h3>
-                            <p></p>
+                            <h3>Try it out: Convert this CSV to RDF </h3>
+                            <p>This produces simplified RDF (in turtle syntax) to allow it to be more human
+                                readable. In reality these would be linked data resources, each with it's own URI.
+                            </p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <p>Convert this CSV to simplified RDF (turtle syntax)</p>
                             <button class="btn-secondary" onclick="create()">Transform</button>
                         </div>
                         <div class="col-md-8" style="height: 250px; overflow: scroll;">
@@ -553,27 +575,24 @@
                     </div>
                 </div>
                 <div id="output" class="row" style="display:none">
-                    <div class="col-md-8" style="max-height: 500px; overflow: scroll;">
+                    <div class="col-md-8">
                         <h3>Output RDF</h3>
-                        <p>This can now be loaded into a RDF database to be <a href="../visualisations/">queryied
+                        <p>This can now be loaded into a RDF database to be <a href="../visualisations/">queried
                                 and/or
                                 visualised</a>.</p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4" style="max-height: 200px; overflow: scroll;">
+                    <div class="col-md-4" style="max-height: 500px; overflow: scroll;">
                         <code id="rdf"></code>
                     </div>
                 </div>
-
             </div>
         </div>
     </main>
 </body>
 <script>
     create = () => {
-        // document.getElementById("intro").style.display = "none";
-
         d3.csv('input/data.csv', function (input) {
             let data = input;
             processRDF(data)
@@ -585,7 +604,7 @@
             let dataset = data[i];
             createAllRDF(dataset)
         }
-        writeAlltoPage()
+        writeAllToPage()
     };
 
     createRDF = (s, p, o) => {
@@ -598,6 +617,7 @@
             document.getElementById("rdf").append(input[i])
         }
         document.getElementById("output").style.display = "";
+        document.getElementById("rdf").focus();
     }
 </script>
 

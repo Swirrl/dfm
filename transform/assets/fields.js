@@ -18,7 +18,7 @@ createAllRDF = (dataset) => {
     createOwnerNameRDF(ownerName, dataset);
 }
 
-writeAlltoPage = () => {
+writeAllToPage = () => {
     writeToPage(datasets)
     writeToPage(datasetID)
     writeToPage(used)
