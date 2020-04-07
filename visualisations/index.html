@@ -31,21 +31,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Example 1: Understanding connections</h2>
                     <div class="row">
                         <div class="col-md-8">
-                            <h3>
-                                What datasets use another dataset
-                            </h3>
+                            <h2>Accessing data</h2>
+
+
+                            <p>Site map <img style="max-width: 100%" src="assets/site-map.jpg"></p>
+                        </div>
+                    </div>
+                    <h2>Viewing and querying data</h2>
+                    <p>We can develop some standard queries to answer common questions. In the sitemap above
+                        these could be made available to users via the 'View existing queries' option in the sitemap
+                        above. We could also offer more expert users the ability to add to this list of queries or
+                        generate one off queries by making use of an API.</p>
+                    <p> Two examples of this using our example dataset are below:</p>
+                    <h3>Example 1: Understanding connections</h3>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p>
+                                Question: <strong>What datasets use another dataset and what are they?</strong>
+                            </p>
                             <code>SELECT * WHERE { ?s :usedBy ?o . }</code>
                             <img src="input/datasetuses.png" style="width: 70%;">
                         </div>
                     </div>
                     <div class="row pt-5">
                         <div class="col-md-12">
-                            <h2>Example 2: Understanding the data</h2>
+                            <h3>Example 2: Understanding the data</h3>
                             <p>
-                                For example: <strong>What datasets contain Personal information or have it in their dependencies?</strong>
+                                Question: <strong>What datasets contain Personal information or have it in their
+                                    dependencies?</strong>
                             </p>
                             <p>The following example shows how the query can be built up to answer the question.</p>
                             <div class="row">
@@ -54,7 +69,7 @@
                                         Step 1: Datasets that contain personal info
                                     </p>
                                     </p>
-                                    <code>select ?dataset <br>where<br> {<br>?dataset ?p :dataset .<br>
+                                    <code>SELECT ?dataset <br>WHERE<br> {<br>?dataset ?p :dataset .<br>
                                         ?dataset :pii :y .<br>
                                         }</code></p>
                                     <img src="input/contain-pii.png" style="width: 100%;">
@@ -64,9 +79,9 @@
                                         Step 2: Datasets that use datasets that contain personal info
                                     </p>
                                     </p>
-                                    <code>select ?dataset<br>
+                                    <code>SELECT ?dataset<br>
 
-                                        where <br>{<br>
+                                        WHERE <br>{<br>
                                         ?dataset ?p :dataset .<br>
                                         ?dataset :uses ?uses.<br>
                                         ?uses :pii :y .<br>
@@ -81,9 +96,9 @@
                                         Step 3: Combination of both queries
                                     </p>
                                     <p>
-                                        <code>select ?dataset ?uses <br>
+                                        <code>SELECT ?dataset ?uses <br>
 
-                                            where<br> {<br>
+                                            WHERE<br> {<br>
                                             {?dataset ?p :dataset .<br>
                                             ?dataset :uses ?uses.<br>
                                             ?uses :pii :y .}<br>
