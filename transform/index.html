@@ -39,11 +39,12 @@
                                     explored what could be extracted from this, using the XML file as a base.</p>
                                 <h3>Detailed process maps</h3>
                                 <p>It was initially difficult to get a clear idea of exactly what was contained within
-                                    the XML file. </p>
-                                <p>However we were able to extract and model the process maps contained within the data
-                                    in RDF
-                                    and load and query. These seem however to be a large amount of the complexity
-                                    contained within the data and clearly require a large effort to create and maintain.
+                                    the XML file. However we were able to extract and model the process maps contained
+                                    within the data
+                                    in RDF, load into a database and query. </p>
+                                <p>These process maps seem however to be a large amount of the complexity contained
+                                    within the data
+                                    and clearly require a large effort to create and maintain.
                                 </p>
                                 <p>The following image shows an extract from one of these process maps visualised in our
                                     RDF
@@ -51,14 +52,13 @@
                                     <br><a href="image1.html"><img src="assets/process-map.png" style="width:40%"
                                             class="img-thumbnail"></a>
                                 </p>
-
                                 <p>Whilst these could undoubtedly be useful, this level of detail does not seem
                                     critical to meet the stated aims of the DFM.
                                 </p>
                                 <p>
                                     Removing this detail and focussing more on the metadata of
                                     the datasets and the connections between them, rather than the process, should
-                                    provide a more streamlined process and whilst meeting the aims of the DFM.
+                                    provide a more streamlined process whilst meeting the aims of the DFM.
                                 </p>
                             </div>
                         </div>
@@ -69,29 +69,30 @@
                         <div class="col-md-8 pt-3">
                             <h2>Creating some dummy data</h2>
                             <p>We initially attempted to create a simpler version from the XML file, however this proved
-                                to be to labour intensive so instead create some
-                                simplified dummy data. This allowed us to move more quickly and focus on the other aims.
-                                This dummy data focussed on:</p>
+                                to be too labour intensive, so instead created some simplified dummy data. This allowed
+                                us to move more quickly and focus on the other aims.</p>
+                            <p> This dummy data focussed on:</p>
                             <ul>
-                                <li>reducing complexity of model</li>
+                                <li>reducing the complexity of the data model</li>
                                 <li>links between datasets</li>
                                 <li>being realistic enough to demonstrate queries</li>
-                                <li>show we should be able to answer the key questions identified with much less data
+                                <li>showing we can answer some key sample questions with much less data
                                 </li>
                             </ul>
                             <p>We created the data in CSV and then transformed this into RDF (see example below). The
-                                number of metadata field was limited to enough to demonstrate functionality.</p>
-                            <p>This transformation could have been from any consistent data source although CSV is often
-                                used. </p>
-                            <p>This data was what we then used for exploring the <a href="../editor/">editor</a> and <a
+                                number of metadata field was limited to just enough to demonstrate functionality.</p>
+                            <p>This initial file for transformation could have been from any consistent data source. CSV
+                                is something we often use and is an easy place to start. </p>
+                            <p>We then used this data for exploring the <a href="../editor/">editor</a> and <a
                                     href="../visualisations/">visualisation</a> questions.</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 pt-5">
                             <h3>Try it out: Convert this CSV to RDF </h3>
-                            <p>This produces simplified RDF (in turtle syntax) to allow it to be more human
-                                readable. In the future system these would be linked data resources, each with it's own URI.
+                            <p>This produces some simplified RDF (in turtle syntax). It is simplified to make it to be
+                                more human readable. In the future system these would be linked data resources, each
+                                with it's own URI.
                             </p>
                         </div>
                     </div>
