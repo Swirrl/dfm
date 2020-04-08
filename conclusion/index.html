@@ -55,7 +55,7 @@
                 <ul>
                     <li>The existing repository, which is an EAP file (Enterprise Architect), available as an export
                     </li>
-                    <li>The existing pipeline processes we discussed are all being run using FME</li>
+                    <li>The existing pipeline processes which are being run using FME</li>
                 </ul>
                 </p>
                 <p>The next step will be to understand what is available from these sources, how complete they are and
@@ -66,7 +66,12 @@
         <div id="metadata" class="row">
             <div class="col-md-8">
                 <h3>Level of metadata and fields to include</h3>
-                <p>Focus on core key fields first then iterate </p>
+                <p>We would advise conducting some 'discovery' user testing to help understand what and users of the
+                    system require and validate any current assumptions. Limiting the metadata directly limits the
+                    burden on updating so we need to be careful to limit to absolutely required fields to build a solid
+                    foundation. </p>
+                <p>New data can be added in the future as required, but it tends to be much more difficult to remove
+                    data once it is in use.</p>
             </div>
         </div>
         <div id="users" class="row">
@@ -81,16 +86,23 @@
         <div id="model" class="row">
             <div class="col-md-8">
                 <h3>Data modelling and transformation</h3>
-                <p>Once we understand what data needs to be included we can then look at the best way to model this data
+                <p>Again this has a lot of dependencies on other questions, but once 
+                    we understand what data needs to be included and what queries 
+                    we need we can then look at the best way to model this data and 
+                    make sure if performs efficiently.
                 </p>
             </div>
         </div>
         <div id="access" class="row">
             <div class="col-md-8">
                 <h3>User facing site</h3>
-                <p>Look at how users will make use of ability to query and visualise</p>
-                <p>Following this we can create a prototype for how this. Some of the page templates used will
-                    likely be similar to the editor, particularly around finding datasets to view or edit.</p>
+                <p>We should look at how users will make use of ability to query and visualise. This can probably be the
+                    same research as suggested for answering the questions around metadata.</p>
+                <p>Following this we can create a prototype for how this will look an function. Some of the page
+                    templates used will
+                    likely be very similar to the editor, particularly around finding datasets to view or edit. Using
+                    the same approach will help users who use both parts, but can also decrease the complexity of
+                    building the system.</p>
             </div>
         </div>
     </div>
