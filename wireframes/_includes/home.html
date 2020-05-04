@@ -1,0 +1,63 @@
+---
+layout: basic
+title: Data flow mapping
+nav: Home
+---
+
+<main role="main">
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-4">Data flow mapping</h1>
+            <p class="lead">Find {% if loggedIn == true %}or create {% endif %}a dataset</p>
+        </div>
+    </div>
+    <div class="container">
+        <div style='font-size:26px' class="input-group mb-3">
+            <input id='search' type="text" onkeyup="filterList()" class="form-control"
+                placeholder="Search for a dataset" autocomplete="off">
+        </div>
+        {% if loggedIn == true %}
+        <ul class="list-group list-group-flush">
+            <li class='list-group-item'>
+                <h3>
+                    <a href="dataset/index.html?id=">Create new dataset</a>
+                </h3>
+            </li>
+        </ul>
+        {% endif %}
+        <ul id='list' class="list-group list-group-flush"> </ul>
+    </div>
+</main>
+</body>
+<script>
+d3.csv('/assets/data.csv', function (input) {
+    let data = input;
+    for (i = 0; i < data.length; i++) {
+        document.getElementById("list").innerHTML +=
+            "<li class='list-group-item' style='font-size:26px' id='listItem'><a href='dataset/index.html?id=" +
+            data[i]
+            .datasetID + "&new='>" + data[i]
+            .datasetName + "</a></li>"
+    }
+});
+
+function filterList() {
+    // Declare variables
+    let input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById('search');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("list");
+    li = ul.getElementsByTagName('li');
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>

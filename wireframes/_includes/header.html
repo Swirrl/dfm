@@ -1,0 +1,46 @@
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class = "container">
+    <div class="d-flex flex-grow-1">
+        <a href="/" class="navbar-brand d-flex align-items-center">
+            <img src="{{ site.logoUrl }}"
+                height="40">
+            <strong class= "pl-4">{{ site.title }}</strong>
+        </a>
+        <div class="w-100 text-right">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar7">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+    <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar7">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+            {%- for item in menu.main -%}
+                <li class="nav-item">
+                        <a href="{% if loggedIn == true %}/authenticated{% endif %}{{item.url}}" class="nav-link nav-link {% if nav == item.name %}active{% endif %}">{{item.name}}</a>
+                </li>
+            {%- endfor -%}
+
+            {% if loggedIn == true %}
+                {%- for item in menu.loggedIn -%}
+                    <li class="nav-item">
+                        <a href="/authenticated{{item.url}}" class="nav-link {% if nav == item.name %}active{% endif %}">{{item.name}}</a>
+                    </li>
+                {%- endfor -%}
+            {% endif %}
+
+            {% if loggedIn == false %}
+                {%- for item in menu.login -%}
+                    <li class="nav-item">
+                        <a href="{{item.url}}" class="nav-link nav-link {% if nav == item.name %}active{% endif %}">{{item.name}}</a>
+                    </li>
+                {%- endfor -%}
+            {% else %}
+            <li class="nav-item">
+                <a href = "/" class="nav-link">{{site.user}} (logout)</a>
+            </li>
+        {% endif %}
+        </ul>
+    </div>
+</div>
+</nav>
