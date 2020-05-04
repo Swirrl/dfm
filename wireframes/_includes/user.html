@@ -1,0 +1,41 @@
+---
+layout: basic
+title: User
+nav: Home
+---
+
+<main role="main">
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-4" id="mainTitle"></h1>
+        </div>
+    </div>
+    <div class="container">
+        <form>
+            <div class="form-group row pb-1">
+                <label for="datasetTitle" class="col-sm-2 col-form-label">email</label>
+                <div class="col-sm-10">
+                    <input id="title" type="text" class="form-control" readonly>
+                </div>
+            </div>
+        </form>
+        <a role="button" id ="deleteButton" href="../" class="btn btn-danger mb-2 btn-lg">Delete user</a>
+        <a role="button" id ="createButton" href="../" class="btn btn-primary mb-2 btn-lg">Create user</a>
+    </div>
+</main>
+
+<script>
+let URL = window.location.href
+let user = URL.split("?user=")[1]
+if (user != 0) {
+    document.getElementById("mainTitle").innerHTML = user
+    document.getElementById("title").value = user
+    document.getElementById("title").removeAttribute('readonly')
+    document.getElementById("createButton").style.display = 'none'; 
+}else{
+    document.getElementById("title").removeAttribute('readonly')
+    document.getElementById("mainTitle").innerHTML = "Create new user" 
+    document.getElementById("deleteButton").style.display = 'none'; 
+}
+ 
+</script>

@@ -14,17 +14,42 @@ nav: Users
     <div class="container">
         <div style='font-size:26px' class="input-group mb-3">
             <input id='search' type="text" onkeyup="filterList()" class="form-control"
-                placeholder="Search for a dataset" autocomplete="off">
+                placeholder="Search for a user" autocomplete="off">
         </div>
-        {% if loggedIn == true %}
         <ul class="list-group list-group-flush">
             <li class='list-group-item'>
                 <h3>
-                    <a href="dataset/index.html?id=">Create new user</a>
+                    <a href="user/index.html?user=">Create new user</a>
                 </h3>
             </li>
         </ul>
-        {% endif %}
-        <ul id='list' class="list-group list-group-flush"> </ul>
+        <ul id='list' class="list-group list-group-flush">
+            {%- for item in users -%}
+                <li class='list-group-item' style='font-size:26px' id='listItem'><a href="user/?user={{item.email}}">{{item.email}}</a></li>
+            {%- endfor -%}
+        </ul>
     </div>
 </main>
+
+<script>
+
+function filterList() {
+    // Declare variables
+    let input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById('search');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("list");
+    li = ul.getElementsByTagName('li');
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>

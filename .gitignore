@@ -1,2 +1,4 @@
 .DS_Store
 /wireframes/_site/*
+/wireframes/node_modules
+/wireframes/package-lock.json
