@@ -27,3 +27,16 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
+
+  label {
+    display: block;   
+}
+
+form {
+  overflow: scroll;
+  margin-bottom: 20px;
+}
+
+.form-list{
+  max-height: 200px;
+}

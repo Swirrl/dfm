@@ -7,57 +7,89 @@ nav: Queries
 <main role="main">
     <div class="jumbotron">
         <div class="container">
-            <h1 class="display-4">Data flow mapping</h1>
-            <p class="lead">Find {% if loggedIn == true %}or create {% endif %}a dataset</p>
+            <h1 class="display-4">Query Data flow mappings</h1>
+            <p class="lead">Run {% if loggedIn == true %}or create {% endif %}a query on a single dataset or the whole
+                DFM</p>
         </div>
     </div>
     <div class="container">
-        <div style='font-size:26px' class="input-group mb-3">
-            <input id='search' type="text" onkeyup="filterList()" class="form-control"
-                placeholder="Search for a dataset" autocomplete="off">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Query a specific dataset</h2>
+                <h3>Select query</h3>
+                <form>
+                    <div class="form-group">
+                        {%- for item in queries.oneDataset -%}
+                        <label for="{{item.name}}"><input type="radio" id="{{item.name}}" name="{{item.name}}">
+                            {{item.name}} </label>
+
+                        </li>
+                        {%- endfor -%}
+                    </div>
+                </form>
+                <h3>Select dataset</h3>
+                <div style="font-size:26px" class="input-group mb-3">
+                    <input id="search" type="text" onkeyup="filterList()" class="form-control"
+                        placeholder="Search for a dataset" autocomplete="off">
+                </div>
+                <form id="singleDatasetList" class="form-list">
+                    
+                </form>
+                <button type="submit" class="btn btn-primary">Run query</button>
+            </div>
+            <div class="col-sm-6">
+                <h2>Query all datasets</h2>
+                <h3>Select query</h3>
+                <form>
+                    <div class="form-group">
+                        {%- for item in queries.allDatasets -%}
+                        <label for="{{item.name}}"><input type="radio" id="{{item.name}}" name="{{item.name}}">
+                            {{item.name}}</label>
+                        {%- endfor -%}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Run query</button>
+                </form>
+            </div>
         </div>
-        {% if loggedIn == true %}
-        <ul class="list-group list-group-flush">
-            <li class='list-group-item'>
-                <h3>
-                    <a href="dataset/index.html?id=">Create new dataset</a>
-                </h3>
-            </li>
-        </ul>
-        {% endif %}
-        <ul id='list' class="list-group list-group-flush"> </ul>
+    </div>
     </div>
 </main>
 </body>
 <script>
-d3.csv('/assets/data.csv', function (input) {
-    let data = input;
-    for (i = 0; i < data.length; i++) {
-        document.getElementById("list").innerHTML +=
-            "<li class='list-group-item' style='font-size:26px' id='listItem'><a href='dataset/index.html?id=" +
-            data[i]
-            .datasetID + "&new='>" + data[i]
-            .datasetName + "</a></li>"
-    }
-});
+    d3.csv('/assets/data.csv', function (input) {
+        let data = input;
+        for (i = 0; i < data.length; i++) {
+            document.getElementById("singleDatasetList").innerHTML += "<label for='" + data[i].datasetID +
+                "'> <input type='radio' id='" + data[i]
+                .datasetID + "' name='" + data[i].datasetName + "'>  " +
+                data[i].datasetName + "</label>"
+        }
+    });
 
-function filterList() {
-    // Declare variables
-    let input, filter, ul, li, a, i, txtValue;
-    input = document.getElementById('search');
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("list");
-    li = ul.getElementsByTagName('li');
+    function filterList() {
+        // Declare variables
+        let input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById('search');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("singleDatasetList");
+        li = ul.getElementsByTagName('input');
+        label = ul.getElementsByTagName('label');
 
-    // Loop through all list items, and hide those who don't match the search query
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
+        for (i = 0; i < li.length; i++) {
+            txtValue = li[i].name;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+        for (i = 0; i < label.length; i++) {
+            txtValue = label[i].textContent;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                label[i].style.display = "";
+            } else {
+                label[i].style.display = "none";
+            }
         }
     }
-}
 </script>
