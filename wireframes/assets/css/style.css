@@ -33,10 +33,10 @@
 }
 
 form {
-  overflow: scroll;
   margin-bottom: 20px;
 }
 
 .form-list{
   max-height: 200px;
+  overflow: scroll;
 }

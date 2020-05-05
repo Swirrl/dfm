@@ -17,7 +17,7 @@ nav: Queries
             <div class="col-sm-6">
                 <h2>Query a specific dataset</h2>
                 <h3>Select query</h3>
-                <form>
+                <form action="results">
                     <div class="form-group">
                         {%- for item in queries.oneDataset -%}
                         <label for="{{item.name}}"><input type="radio" id="{{item.name}}" name="{{item.name}}">
@@ -26,21 +26,22 @@ nav: Queries
                         </li>
                         {%- endfor -%}
                     </div>
-                </form>
+                <!-- </form> -->
                 <h3>Select dataset</h3>
                 <div style="font-size:26px" class="input-group mb-3">
                     <input id="search" type="text" onkeyup="filterList()" class="form-control"
                         placeholder="Search for a dataset" autocomplete="off">
                 </div>
-                <form id="singleDatasetList" class="form-list">
-                    
-                </form>
+                <div id="singleDatasetList" class="form-list">
+                </div>
                 <button type="submit" class="btn btn-primary">Run query</button>
+                </form>
+                
             </div>
             <div class="col-sm-6">
                 <h2>Query all datasets</h2>
                 <h3>Select query</h3>
-                <form>
+                <form action="results">
                     <div class="form-group">
                         {%- for item in queries.allDatasets -%}
                         <label for="{{item.name}}"><input type="radio" id="{{item.name}}" name="{{item.name}}">
