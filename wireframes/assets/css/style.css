@@ -59,3 +59,8 @@ body {
 .bg-dark {
   background-color: #0b0d0d !important;
 }
+
+/* Add underline on mouse hover to nav links */
+.nav-link:hover {
+  text-decoration: underline;
+}
