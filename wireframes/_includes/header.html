@@ -32,7 +32,7 @@
                     {% if loggedIn == false %}
                     {%- for item in menu.login -%}
                     <li class="nav-item">
-                        <a href="{{item.url}}" class="nav-link nav-link {% if nav == item.name %}active{% endif %}">{{item.name}}</a>
+                        <a href="{{item.url}}" class="nav-link {% if nav == item.name %}active{% endif %}">{{item.name}}</a>
                     </li>
                     {%- endfor -%}
                     {% else %}
