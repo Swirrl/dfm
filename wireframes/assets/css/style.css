@@ -46,6 +46,13 @@ form {
   overflow: scroll;
 }
 
+/* Typograhy */
+
+/* Update font stack to use common system san-serifs */
+body {
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
 /* Header */
 
 /* Update header background to match EA's logo */
