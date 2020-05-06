@@ -53,6 +53,11 @@ body {
   font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
+/* Making lead weight normal, because 300 is too thin for readability */
+.lead {
+  font-weight: normal;
+}
+
 /* Header */
 
 /* Update header background to match EA's logo */
