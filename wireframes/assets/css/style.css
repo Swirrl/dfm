@@ -45,3 +45,10 @@ form {
   max-height: 200px;
   overflow: scroll;
 }
+
+/* Header */
+
+/* Update header background to match EA's logo */
+.bg-dark {
+  background-color: #0b0d0d !important;
+}
