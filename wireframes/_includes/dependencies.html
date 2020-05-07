@@ -15,14 +15,14 @@ nav: Home
                     <li class="breadcrumb-item active" aria-current="page">Select datasets</li>
                 </ol>
             </nav>
-            <h1 class="display-4" id="mainTitle"></h1>
-            <p class="lead">Allow you to create a dataset create links to others and define metadata</p>
+            <h1 class="display-4 font-weight-bold" id="mainTitle"></h1>
+            <p class="lead">Allows you to create a dataset create links to others and define metadata</p>
         </div>
     </div>
     <div class="container">
-        <div style='font-size:26px' class="input-group mb-3">
-            <input id='search' type="text" onkeyup="filterList()" class="form-control"
-                placeholder="Search for a dataset" autocomplete="off">
+        <div class="input-group mb-3">
+            <label for="search" class="sr-only">Search</label>
+            <input id='search' type="text" onkeyup="filterList()" class="form-control form-control-lg" placeholder="Search for a dataset" autocomplete="off">
         </div>
         <ul id='list' class="list-group list-group-flush"> </ul>
     </div>
@@ -33,17 +33,17 @@ nav: Home
     let URL = window.location.href
     let dataset = URL.split("?id=")[1]
     if (dataset != 0) {
-    d3.csv('/assets/data.csv', function (input) {
-        let data = input;
-        let dataset = data.find(findDataset)
-        for (i = 0; i < data.length; i++) {
-            document.getElementById("list").innerHTML +=
-                "<li class='list-group-item' style='font-size:26px' id='listItem'><a href='../index.html?id=" + 
-                dataset.datasetID + "&new="+ data[i].datasetID +"'>" + data[i].datasetName + "</a></li>"
-                    document.getElementById("mainTitle").innerHTML = "Select datasets used by " + dataset.datasetName
-        }
-    });
-}
+        d3.csv('/assets/data.csv', function (input) {
+            let data = input;
+            let dataset = data.find(findDataset)
+            for (i = 0; i < data.length; i++) {
+                document.getElementById("list").innerHTML +=
+                    "<li class='list-group-item h3 font-weight-normal' id='listItem'><a class='text-decoration-underline' href='../index.html?id=" +
+                    dataset.datasetID + "&new=" + data[i].datasetID + "'>" + data[i].datasetName + "</a></li>"
+                document.getElementById("mainTitle").innerHTML = "Select datasets used by " + dataset.datasetName
+            }
+        });
+    }
 
     function filterList() {
         // Declare variables
