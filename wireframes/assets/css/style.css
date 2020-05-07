@@ -1,3 +1,73 @@
+/* Typography */
+
+/* Update font stack to use common system san-serifs */
+body {
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Making lead weight normal, because 300 is too thin for readability */
+.lead {
+  font-weight: normal;
+}
+
+/* Links and buttons */
+
+.text-decoration-underline {
+  text-decoration: underline;
+}
+
+a {
+  color: #1c52a4;
+}
+
+a:hover {
+  color: #123872;
+}
+
+/* Header */
+
+/* Update header background to match EA's logo */
+.bg-dark {
+  background-color: #0b0d0d !important;
+}
+
+/* Add underline on mouse hover to nav links */
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+/* Forms */
+
+label {
+  display: block;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+.form-list {
+  max-height: 200px;
+  overflow: scroll;
+}
+
+.form-control {
+  border: 2px solid #343a40;
+  border-radius: 0;
+}
+
+.form-control:focus {
+  border-color: #343a40;
+}
+
+.form-control::placeholder,
+.form-control {
+  opacity: 1;
+  color: #292d33;
+}
+
+/* Signin form */
+
 .form-signin {
   width: 100%;
   max-width: 330px;
@@ -25,61 +95,11 @@
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+  border-bottom: 0;
 }
 
 .form-signin input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-}
-
-label {
-  display: block;
-}
-
-form {
-  margin-bottom: 20px;
-}
-
-.form-list {
-  max-height: 200px;
-  overflow: scroll;
-}
-
-/* Typography */
-
-/* Update font stack to use common system san-serifs */
-body {
-  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-}
-
-/* Making lead weight normal, because 300 is too thin for readability */
-.lead {
-  font-weight: normal;
-}
-
-/* Links and buttons */
-
-.text-decoration-underline {
-  text-decoration: underline;
-}
-  
-a {
-  color: #1c52a4;
-}
-
-a:hover {
-  color: #123872;
-}
-
-/* Header */
-
-/* Update header background to match EA's logo */
-.bg-dark {
-  background-color: #0b0d0d !important;
-}
-
-/* Add underline on mouse hover to nav links */
-.nav-link:hover {
-  text-decoration: underline;
 }
