@@ -10,9 +10,6 @@
         },
         {
             "name": "Do I have dependencies on data owned by other business areas?"
-        },
-        {
-            "name": "Does anything this dataset uses contain personal information?"
         }
     ],
     "allDatasets": [{
