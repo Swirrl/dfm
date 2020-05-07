@@ -102,8 +102,8 @@ nav: Home
             let data = input;
             let dataset = data.find(findDataset)
             document.getElementById("mainTitle").innerHTML = dataset.datasetName
-            document.getElementById("title").value = dataset.datasetName
-            document.getElementById("owner").value = dataset.ownerName
+            document.getElementById("datasetTitle").value = dataset.datasetName
+            document.getElementById("inputOwner").value = dataset.ownerName
             document.getElementById("input").value = dataset.uses
             document.getElementById("licence").value = dataset.licence
             if (dataset.pia === "y") {
