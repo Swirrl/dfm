@@ -1,6 +1,6 @@
 ---
 layout: basic
-title: Data flow mapping
+title: Users
 nav: Users
 ---
 
@@ -12,21 +12,28 @@ nav: Users
         </div>
     </div>
     <div class="container">
-        <div class="input-group mb-3">
-            <label for="search" class="sr-only">Search</label>
-            <input id='search' type="text" onkeyup="filterList()" class="form-control form-control-lg" placeholder="Search for a user" autocomplete="off">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="input-group mb-3">
+                    <label for="search" class="sr-only">Search</label>
+                    <input id='search' type="text" onkeyup="filterList()" class="form-control form-control-lg"
+                        placeholder="Search for a user" autocomplete="off">
+                </div>
+            </div>
+            <div class="col-md-3 offset-md-1">
+                <a class="btn btn-primary mb-2 btn-lg rounded-0"" href=" user/index.html?user=">Create new user</a>
+                    </div> <ul id='list' class="list-group list-group-flush">
+                    {%- for item in users -%}
+                    <li class='list-group-item h3 font-weight-normal' id='listItem'><a class="text-decoration-underline"
+                            href="user/?user={{item.email}}">{{item.email}}</a>
+                    </li>
+                    {%- endfor -%}
+                    </ul>
+            </div>
         </div>
-        <a class="text-decoration-underline h4 font-weight-normal bg-light p-3 d-inline-block mb-4" href="user/index.html?user=">Create new user</a>
-        <ul id='list' class="list-group list-group-flush">
-            {%- for item in users -%}
-            <li class='list-group-item h3 font-weight-normal' id='listItem'><a class="text-decoration-underline" href="user/?user={{item.email}}">{{item.email}}</a></li>
-            {%- endfor -%}
-        </ul>
-    </div>
 </main>
 
 <script>
-
     function filterList() {
         // Declare variables
         let input, filter, ul, li, a, i, txtValue;
