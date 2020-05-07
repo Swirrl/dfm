@@ -57,6 +57,11 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Breadcrumbs */
+.breadcrumb-item.active {
+  color: #42474C !important;
+}
+
 /* Forms */
 
 label {
