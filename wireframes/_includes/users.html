@@ -7,25 +7,19 @@ nav: Users
 <main role="main" id="content">
     <div class="jumbotron">
         <div class="container">
-            <h1 class="display-4">Users</h1>
+            <h1 class="display-4 font-weight-bold">Users</h1>
             <p class="lead">Find or create a user</p>
         </div>
     </div>
     <div class="container">
-        <div style='font-size:26px' class="input-group mb-3">
-            <input id='search' type="text" onkeyup="filterList()" class="form-control"
-                placeholder="Search for a user" autocomplete="off">
+        <div class="input-group mb-3">
+            <label for="search" class="sr-only">Search</label>
+            <input id='search' type="text" onkeyup="filterList()" class="form-control form-control-lg" placeholder="Search for a user" autocomplete="off">
         </div>
-        <ul class="list-group list-group-flush">
-            <li class='list-group-item'>
-                <h3>
-                    <a href="user/index.html?user=">Create new user</a>
-                </h3>
-            </li>
-        </ul>
+        <a class="text-decoration-underline h4 font-weight-normal bg-light p-3 d-inline-block mb-4" href="user/index.html?user=">Create new user</a>
         <ul id='list' class="list-group list-group-flush">
             {%- for item in users -%}
-                <li class='list-group-item' style='font-size:26px' id='listItem'><a href="user/?user={{item.email}}">{{item.email}}</a></li>
+            <li class='list-group-item h3 font-weight-normal' id='listItem'><a class="text-decoration-underline" href="user/?user={{item.email}}">{{item.email}}</a></li>
             {%- endfor -%}
         </ul>
     </div>
@@ -33,23 +27,23 @@ nav: Users
 
 <script>
 
-function filterList() {
-    // Declare variables
-    let input, filter, ul, li, a, i, txtValue;
-    input = document.getElementById('search');
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("list");
-    li = ul.getElementsByTagName('li');
+    function filterList() {
+        // Declare variables
+        let input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById('search');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("list");
+        li = ul.getElementsByTagName('li');
 
-    // Loop through all list items, and hide those who don't match the search query
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
         }
     }
-}
 </script>
