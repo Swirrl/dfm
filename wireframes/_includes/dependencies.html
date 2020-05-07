@@ -7,14 +7,6 @@ nav: Home
 <main role="main" id="content">
     <div class="jumbotron">
         <div class="container">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb pl-0">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="../../">Create/Edit dataset</a></li>
-                    <li class="breadcrumb-item"><a href="../">Edit metadata</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Select datasets</li>
-                </ol>
-            </nav>
             <h1 class="display-4 font-weight-bold" id="mainTitle"></h1>
             <p class="lead">Allows you to create a dataset create links to others and define metadata</p>
         </div>
@@ -22,27 +14,30 @@ nav: Home
     <div class="container">
         <div class="input-group mb-3">
             <label for="search" class="sr-only">Search</label>
-            <input id='search' type="text" onkeyup="filterList()" class="form-control form-control-lg" placeholder="Search for a dataset" autocomplete="off">
+            <input id='search' type="text" onkeyup="filterList()" class="form-control form-control-lg"
+                placeholder="Search for a dataset" autocomplete="off">
         </div>
         <ul id='list' class="list-group list-group-flush"> </ul>
     </div>
 </main>
 
 <script>
-
     let URL = window.location.href
     let dataset = URL.split("?id=")[1]
     if (dataset != 0) {
-        d3.csv('/assets/data.csv', function (input) {
-            let data = input;
-            let dataset = data.find(findDataset)
-            for (i = 0; i < data.length; i++) {
-                document.getElementById("list").innerHTML +=
-                    "<li class='list-group-item h3 font-weight-normal' id='listItem'><a class='text-decoration-underline' href='../index.html?id=" +
-                    dataset.datasetID + "&new=" + data[i].datasetID + "'>" + data[i].datasetName + "</a></li>"
-                document.getElementById("mainTitle").innerHTML = "Select datasets used by " + dataset.datasetName
-            }
-        });
+        fetch('/assets/datasets.json')
+            .then(response => response.json())
+            .then(input => {
+                let data = input;
+                let dataset = data.find(findDataset)
+                for (i = 0; i < data.length; i++) {
+                    document.getElementById("list").innerHTML +=
+                        "<li class='list-group-item h3 font-weight-normal' id='listItem'><a class='text-decoration-underline' href='../index.html?id=" +
+                        dataset.datasetID + "&new=" + data[i].datasetID + "'>" + data[i].datasetName + "</a></li>"
+                    document.getElementById("mainTitle").innerHTML = "Select datasets used by " + dataset
+                        .datasetName
+                };
+            })
     }
 
     function filterList() {

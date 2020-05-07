@@ -8,7 +8,8 @@ nav: Queries
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-4 font-weight-bold">Query data flow mappings</h1>
-            <p class="lead">Run {% if loggedIn == true %}or create {% endif %}a query on a single dataset or all datasets</p>
+            <p class="lead">Run {% if loggedIn == true %}or create {% endif %}a query on a single dataset or all
+                datasets</p>
         </div>
     </div>
     <div class="container">
@@ -29,16 +30,20 @@ nav: Queries
                     <h3 class="mt-4 h4">Select dataset</h3>
                     <div class="input-group mb-2">
                         <label for="search" class="sr-only">Search</label>
-                        <input id="search" type="text" onkeyup="filterList()" class="form-control" placeholder="Search for a dataset" autocomplete="off">
+                        <input id="search" type="text" onkeyup="filterList()" class="form-control"
+                            placeholder="Search for a dataset" autocomplete="off">
                     </div>
                     <fieldset>
                         <legend class="sr-only">List of datasets</legend>
                         <div id="singleDatasetList" tabindex="0" class="form-list p-2 border mb-4">
+                            {%- for item in datasets -%}
+                            <label for='{{item.datasetID}}'> <input type='radio' id='{{item.datasetID}}'
+                                    name='{{item.datasetName}}'> {{item.datasetName}}</label>
+                            {%- endfor -%}
                         </div>
                     </fieldset>
                     <button type="submit" class="btn btn-primary rounded-0">Run query</button>
                 </form>
-
             </div>
             <div class="col-sm-6">
                 <h2 class="mb-4">Query all datasets</h2>
@@ -60,16 +65,6 @@ nav: Queries
     </div>
 </main>
 <script>
-    d3.csv('/assets/data.csv', function (input) {
-        let data = input;
-        for (i = 0; i < data.length; i++) {
-            document.getElementById("singleDatasetList").innerHTML += "<label for='" + data[i].datasetID +
-                "'> <input type='radio' id='" + data[i]
-                    .datasetID + "' name='" + data[i].datasetName + "'>  " +
-                data[i].datasetName + "</label>"
-        }
-    });
-
     function filterList() {
         // Declare variables
         let input, filter, ul, li, a, i, txtValue;
