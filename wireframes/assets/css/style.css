@@ -33,7 +33,9 @@ a:hover {
 
 /* Buttons */
 
-.btn-primary {
+.btn-primary,
+.btn-primary.disabled,
+.btn-primary:disabled {
   background-color: #1c52a4;
   border-color: #1c52a4;
 }

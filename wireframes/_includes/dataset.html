@@ -11,80 +11,68 @@ nav: Home
         </div>
     </div>
     <div class="container">
-        <h2 class="pb-3">About this dataset</h2>
-        <form>
-            <div class="form-group row pb-1">
-                <label for="datasetTitle" class="col-sm-2 col-form-label">Dataset title</label>
-                <div class="col-sm-10">
-                    <input id="datasetTitle" type="text" class="form-control" readonly>
-                </div>
-            </div>
-            <div class="form-group row pb-1">
-                <label for="inputOwner" class="col-sm-2 col-form-label">Owner</label>
-                <div class="col-sm-10">
-                    {% if loggedIn == false %}
-                    <input id="inputOwner" type="text" class="form-control" readonly>
-                    {% else %}
-                    <input id="inputOwner" type="text" class="form-control">
-                    {% endif %}
-                </div>
-            </div>
-            <div class="form-group row pb-1">
-                <label for="input" class="col-sm-2 col-form-label">Input datasets</label>
-                {% if loggedIn == false %}
-                <div class="col-sm-10">
-                    <input id="input" type="text" class="form-control" readonly>
-                </div>
-                {% else %}
-                <div class="col-sm-8">
-                    <input id="input" type="text" class="form-control" readonly>
-                </div>
-                {% endif %}
-                {% if loggedIn == true %}
-                <a role="button" id="dependencies" href="dependencies/" class="btn btn-primary mb-2 text-white">Add/edit</a>
-                {% endif %}
-            </div>
-        </form>
-        <h2 class="pb-3">Usage and licence</h2>
-        <form>
-            <div class="form-group">
-
-                {% if loggedIn == false %}
-
-
-                <div class="form-group row pb-1">
-                    <label for="licence" class="col-sm-2 col-form-label">Licence</label>
-                    <div class="col-sm-10">
-                        <input id="licence" type="text" class="form-control" readonly>
+        <div class="row">
+            <div class="col-lg-8">
+                <h2 class="pb-3">About this dataset</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="datasetTitle">Dataset title</label>
+                        <input id="datasetTitle" type="text" class="form-control" readonly>
                     </div>
-                </div>
-                {% else %}
-                <label for="licence">Licence</label>
-                <select class="form-control" id="licence">
-                    <option selected disabled>Please choose an option</option>
-                    <option>http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</option>
-                    <option>https://choosealicense.com/licenses/apache-2.0/</option>
-                    <option>https://choosealicense.com/licenses/gpl-3.0/</option>
-                    <option>https://choosealicense.com/licenses/mpl-2.0/</option>
-                    <option>https://choosealicense.com/licenses/mit/</option>
-                </select>
-                {% endif %}
-            </div>
-            <div class="form-group row pb-1">
-                <label for="pia" class="col-sm-2 col-form-label">Contains Personally identifiable
-                    information</label>
-                <div class="col-sm-10">
-                    {% if loggedIn == false %}
-                    <input id="pia" type="text" class="form-control" readonly>
-                    {% else %}
-                    <input id="pia" type="text" class="form-control">
+                    <div class="form-group pb-1">
+                        <label for="inputOwner">Owner</label>
+                        {% if loggedIn == false %}
+                        <input id="inputOwner" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="inputOwner" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="input">Input datasets</label>
+                        {% if loggedIn == false %}
+                        <input id="input" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="input" type="text" class="form-control" readonly>
+                        {% endif %}
+                        {% if loggedIn == true %}
+                        <a role="button" id="dependencies" href="dependencies/" class="btn btn-primary mb-2 mt-2">Add/edit input datasets</a>
+                        {% endif %}
+                    </div>
+                </form>
+                <h2 class="pb-3">Usage and licence</h2>
+                <form>
+                    <div class="form-group">
+                        {% if loggedIn == false %}
+                        <div class="form-group pb-1">
+                            <label for="licence">Licence</label>
+                            <input id="licence" type="text" class="form-control" readonly>
+                        </div>
+                        {% else %}
+                        <label for="licence">Licence</label>
+                        <select class="form-control" id="licence">
+                            <option selected disabled>Please choose an option</option>
+                            <option>http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</option>
+                            <option>https://choosealicense.com/licenses/apache-2.0/</option>
+                            <option>https://choosealicense.com/licenses/gpl-3.0/</option>
+                            <option>https://choosealicense.com/licenses/mpl-2.0/</option>
+                            <option>https://choosealicense.com/licenses/mit/</option>
+                        </select>
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="pia" class="form-label">Contains Personally identifiable information</label>
+                        {% if loggedIn == false %}
+                        <input id="pia" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="pia" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    {% if loggedIn == true %}
+                    <a role="button" href="../" class="btn btn-primary mb-2 btn-lg">Save</a> <a class="p-3" href="../">Cancel</a>
                     {% endif %}
-                </div>
+                </form>
             </div>
-            {% if loggedIn == true %}
-            <a role="button" href="../" class="btn btn-primary mb-2 btn-lg">Save</a> <a class="p-3" href="../">Cancel</a>
-            {% endif %}
-        </form>
+        </div>
     </div>
 </main>
 
