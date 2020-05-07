@@ -7,7 +7,7 @@ nav: Home
 <main role="main" id="content">
     <div class="jumbotron">
         <div class="container">
-            <h1 class="display-4" id="mainTitle"></h1>
+            <h1 class="display-4 font-weight-bold" id="mainTitle"></h1>
         </div>
     </div>
     <div class="container">
@@ -16,16 +16,16 @@ nav: Home
             <div class="form-group row pb-1">
                 <label for="datasetTitle" class="col-sm-2 col-form-label">Dataset title</label>
                 <div class="col-sm-10">
-                    <input id="title" type="text" class="form-control" readonly>
+                    <input id="datasetTitle" type="text" class="form-control" readonly>
                 </div>
             </div>
             <div class="form-group row pb-1">
                 <label for="inputOwner" class="col-sm-2 col-form-label">Owner</label>
                 <div class="col-sm-10">
                     {% if loggedIn == false %}
-                        <input id="owner" type="text" class="form-control" readonly >
+                    <input id="inputOwner" type="text" class="form-control" readonly>
                     {% else %}
-                        <input id="owner" type="text" class="form-control" >
+                    <input id="inputOwner" type="text" class="form-control">
                     {% endif %}
                 </div>
             </div>
@@ -41,27 +41,26 @@ nav: Home
                 </div>
                 {% endif %}
                 {% if loggedIn == true %}
-                <a role="button" id="dependencies" href="dependencies/"
-                    class="btn btn-primary mb-2 text-white">Add/edit</a>
+                <a role="button" id="dependencies" href="dependencies/" class="btn btn-primary mb-2 text-white">Add/edit</a>
                 {% endif %}
             </div>
         </form>
         <h2 class="pb-3">Usage and licence</h2>
         <form>
             <div class="form-group">
-                
+
                 {% if loggedIn == false %}
 
 
                 <div class="form-group row pb-1">
-                    <label for="datasetTitle" class="col-sm-2 col-form-label">Licence</label>
+                    <label for="licence" class="col-sm-2 col-form-label">Licence</label>
                     <div class="col-sm-10">
                         <input id="licence" type="text" class="form-control" readonly>
                     </div>
                 </div>
                 {% else %}
                 <label for="licence">Licence</label>
-                    <select class="form-control" id="licence">
+                <select class="form-control" id="licence">
                     <option></option>
                     <option>http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</option>
                     <option>https://choosealicense.com/licenses/apache-2.0/</option>
@@ -90,38 +89,38 @@ nav: Home
 </main>
 
 <script>
-let URL = window.location.href
-let parameters = URL.split("?id=")[1]
-let newInputDataset = parameters.split("&")[1]
-let dataset = parameters.split("&")[0]
-newInputDataset = parameters.split("=")[1]
-if (dataset != 0) {
-    if(window.location.href.indexOf("authenticated") > -1) {
-    document.getElementById("dependencies").href = "dependencies/index.html?id=" + dataset
+    let URL = window.location.href
+    let parameters = URL.split("?id=")[1]
+    let newInputDataset = parameters.split("&")[1]
+    let dataset = parameters.split("&")[0]
+    newInputDataset = parameters.split("=")[1]
+    if (dataset != 0) {
+        if (window.location.href.indexOf("authenticated") > -1) {
+            document.getElementById("dependencies").href = "dependencies/index.html?id=" + dataset
+        }
+        d3.csv('/assets/data.csv', function (input) {
+            let data = input;
+            let dataset = data.find(findDataset)
+            document.getElementById("mainTitle").innerHTML = dataset.datasetName
+            document.getElementById("title").value = dataset.datasetName
+            document.getElementById("owner").value = dataset.ownerName
+            document.getElementById("input").value = dataset.uses
+            document.getElementById("licence").value = dataset.licence
+            if (dataset.pia === "y") {
+                document.getElementById("pia").value = "Yes"
+            } else {
+                document.getElementById("pia").value = "No"
+            }
+            if (newInputDataset != 0) {
+                document.getElementById("input").value = newInputDataset + "," + dataset.uses
+            }
+        });
+    } else {
+        document.getElementById("title").removeAttribute('readonly')
+        document.getElementById("dependencies").classList.add('disabled')
+        document.getElementById("mainTitle").innerHTML = "Create new dataset"
     }
-    d3.csv('/assets/data.csv', function (input) {
-        let data = input;
-        let dataset = data.find(findDataset)
-        document.getElementById("mainTitle").innerHTML = dataset.datasetName
-        document.getElementById("title").value = dataset.datasetName
-        document.getElementById("owner").value = dataset.ownerName
-        document.getElementById("input").value = dataset.uses
-        document.getElementById("licence").value = dataset.licence
-        if (dataset.pia === "y") {
-            document.getElementById("pia").value = "Yes"
-        } else {
-            document.getElementById("pia").value = "No"
-        }
-        if (newInputDataset != 0) {
-            document.getElementById("input").value = newInputDataset + "," + dataset.uses
-        }
-    });
-} else {
-    document.getElementById("title").removeAttribute('readonly')
-    document.getElementById("dependencies").classList.add('disabled')
-    document.getElementById("mainTitle").innerHTML = "Create new dataset"
-}
-findDataset = (input) => {
-    return input.datasetID === dataset;
-}
+    findDataset = (input) => {
+        return input.datasetID === dataset;
+    }
 </script>
