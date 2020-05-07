@@ -15,35 +15,43 @@ nav: Queries
         <div class="row">
             <div class="col-sm-6">
                 <h2 class="mb-4">Query a single dataset</h2>
-                <h3 class="h4">Select query</h3>
                 <form action="results">
-                    <div class="form-group">
-                        {%- for item in queries.oneDataset -%}
-                        <label for="{{item.name}}"><input type="radio" id="{{item.name}}" name="{{item.name}}">
-                            {{item.name}}
-                        </label>
-                        {%- endfor -%}
-                    </div>
+                    <fieldset>
+                        <legend class="h4">Select query</legend>
+                        <div class="form-group">
+                            {%- for item in queries.oneDataset -%}
+                            <label for="{{item.name}}"><input type="radio" id="{{item.name}}" name="{{item.name}}">
+                                {{item.name}}
+                            </label>
+                            {%- endfor -%}
+                        </div>
+                    </fieldset>
                     <h3 class="mt-4 h4">Select dataset</h3>
                     <div class="input-group mb-2">
+                        <label for="search" class="sr-only">Search</label>
                         <input id="search" type="text" onkeyup="filterList()" class="form-control" placeholder="Search for a dataset" autocomplete="off">
                     </div>
-                    <div id="singleDatasetList" tabindex="0" class="form-list p-2 border mb-4">
-                    </div>
+                    <fieldset>
+                        <legend class="sr-only">List of datasets</legend>
+                        <div id="singleDatasetList" tabindex="0" class="form-list p-2 border mb-4">
+                        </div>
+                    </fieldset>
                     <button type="submit" class="btn btn-primary">Run query</button>
                 </form>
 
             </div>
             <div class="col-sm-6">
                 <h2 class="mb-4">Query all datasets</h2>
-                <h3 class="h4">Select query</h3>
                 <form action="results">
-                    <div class="form-group">
-                        {%- for item in queries.allDatasets -%}
-                        <label for="{{item.name}}"><input type="radio" id="{{item.name}}" name="{{item.name}}">
-                            {{item.name}}</label>
-                        {%- endfor -%}
-                    </div>
+                    <fieldset>
+                        <legend class="h4">Select query</legend>
+                        <div class="form-group">
+                            {%- for item in queries.allDatasets -%}
+                            <label for="{{item.name}}"><input type="radio" id="{{item.name}}" name="{{item.name}}">
+                                {{item.name}}</label>
+                            {%- endfor -%}
+                        </div>
+                    </fieldset>
                     <button type="submit" class="btn btn-primary">Run query</button>
                 </form>
             </div>
