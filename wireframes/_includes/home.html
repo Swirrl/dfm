@@ -17,13 +17,7 @@ nav: Home
             <input id='search' type="text" onkeyup="filterList()" class="form-control form-control-lg" placeholder="Search for a dataset" autocomplete="off">
         </div>
         {% if loggedIn == true %}
-        <ul class="list-group list-group-flush">
-            <li class='list-group-item'>
-                <h3>
-                    <a href="dataset/index.html?id=">Create new dataset</a>
-                </h3>
-            </li>
-        </ul>
+        <a class="text-decoration-underline h4 font-weight-normal bg-light p-3 d-inline-block mb-4" href="dataset/index.html?id=">Create new dataset</a>
         {% endif %}
         <ul id='list' class="list-group list-group-flush"> </ul>
     </div>

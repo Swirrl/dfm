@@ -10,6 +10,13 @@ body {
   font-weight: normal;
 }
 
+/* Colours */
+
+/* Overwrite bootstrap class to be darker */
+.bg-light {
+  background-color: #e9ecef !important;
+}
+
 /* Links */
 
 .text-decoration-underline {
