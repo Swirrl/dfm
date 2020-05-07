@@ -10,7 +10,7 @@ body {
   font-weight: normal;
 }
 
-/* Links and buttons */
+/* Links */
 
 .text-decoration-underline {
   text-decoration: underline;
@@ -22,6 +22,18 @@ a {
 
 a:hover {
   color: #123872;
+}
+
+/* Buttons */
+
+.btn-primary {
+  background-color: #1c52a4;
+  border-color: #1c52a4;
+}
+
+.btn-primary:hover {
+  background-color: #123872;
+  border-color: #123872;
 }
 
 /* Header */
