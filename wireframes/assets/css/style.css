@@ -58,6 +58,20 @@ body {
   font-weight: normal;
 }
 
+/* Links and buttons */
+
+.text-decoration-underline {
+  text-decoration: underline;
+}
+  
+a {
+  color: #1c52a4;
+}
+
+a:hover {
+  color: #123872;
+}
+
 /* Header */
 
 /* Update header background to match EA's logo */
