@@ -27,7 +27,7 @@ nav: Home
                 {% endif %}
             </div>
         </div>
-        <ul class="list-group list-group-flush">
+        <ul id = "dataset-list" class="list-group list-group-flush">
             {%- for item in datasets -%}
             <li class='list-group-item h3 font-weight-normal' id='listItem'>
                 <a class='text-decoration-underline'
@@ -43,7 +43,7 @@ nav: Home
         let input, filter, ul, li, a, i, txtValue;
         input = document.getElementById('search');
         filter = input.value.toUpperCase();
-        ul = document.getElementById("list");
+        ul = document.getElementById("dataset-list");
         li = ul.getElementsByTagName('li');
         console.log(li)
 
