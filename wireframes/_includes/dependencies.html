@@ -14,10 +14,10 @@ nav: Home
     <div class="container">
         <div class="input-group mb-3">
             <label for="search" class="sr-only">Search</label>
-            <input id='search' type="text" onkeyup="filterList()" class="form-control form-control-lg"
+            <input id="search" type="text" onkeyup="filterList('datasetList')" class="form-control form-control-lg"
                 placeholder="Search for a dataset" autocomplete="off">
         </div>
-        <ul id='list' class="list-group list-group-flush"> </ul>
+        <ul id="datasetList" class="list-group list-group-flush"> </ul>
     </div>
 </main>
 
@@ -31,7 +31,7 @@ nav: Home
                 let data = input;
                 let dataset = data.find(findDataset)
                 for (i = 0; i < data.length; i++) {
-                    document.getElementById("list").innerHTML +=
+                    document.getElementById("datasetList").innerHTML +=
                         "<li class='list-group-item h3 font-weight-normal' id='listItem'><a class='text-decoration-underline' href='../index.html?id=" +
                         dataset.datasetID + "&new=" + data[i].datasetID + "'>" + data[i].datasetName + "</a></li>"
                     document.getElementById("mainTitle").innerHTML = "Select datasets used by " + dataset
@@ -40,25 +40,25 @@ nav: Home
             })
     }
 
-    function filterList() {
-        // Declare variables
-        let input, filter, ul, li, a, i, txtValue;
-        input = document.getElementById('search');
-        filter = input.value.toUpperCase();
-        ul = document.getElementById("list");
-        li = ul.getElementsByTagName('li');
+    // function filterList() {
+    //     // Declare variables
+    //     let input, filter, ul, li, a, i, txtValue;
+    //     input = document.getElementById('search');
+    //     filter = input.value.toUpperCase();
+    //     ul = document.getElementById("list");
+    //     li = ul.getElementsByTagName('li');
 
-        // Loop through all list items, and hide those who don't match the search query
-        for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByTagName("a")[0];
-            txtValue = a.textContent || a.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = "";
-            } else {
-                li[i].style.display = "none";
-            }
-        }
-    }
+    //     // Loop through all list items, and hide those who don't match the search query
+    //     for (i = 0; i < li.length; i++) {
+    //         a = li[i].getElementsByTagName("a")[0];
+    //         txtValue = a.textContent || a.innerText;
+    //         if (txtValue.toUpperCase().indexOf(filter) > -1) {
+    //             li[i].style.display = "";
+    //         } else {
+    //             li[i].style.display = "none";
+    //         }
+    //     }
+    // }
 
     findDataset = (input) => {
         return input.datasetID === dataset;

@@ -21,19 +21,17 @@ nav: Queries
     </div>
 </main>
 <script>
-
     let URL = window.location.href
     let parameters = decodeURIComponent(URL.split("?")[1])
     let query = parameters.split("=")[0]
     let dataset = parameters.split("&")[1]
 
-    query = query.replace(/\+/g,' ');
+    query = query.replace(/\+/g, ' ');
     document.getElementById("query").innerHTML = query
 
     if (dataset != null) {
         dataset = dataset.split("=")[0]
-        dataset = dataset.replace(/\+/g,' ');
+        dataset = dataset.replace(/\+/g, ' ');
         document.getElementById("dataset").innerHTML = dataset
     }
-
 </script>

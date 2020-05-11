@@ -14,26 +14,25 @@ nav: Home
         <form>
             <div class="form-group pb-1">
                 <label for="email">Email</label>
-                    <input id="email" type="text" class="form-control" readonly>
+                <input id="email" type="text" class="form-control" readonly>
             </div>
         </form>
-        <a role="button" id ="deleteButton" href="../" class="btn btn-danger mb-2 btn-lg rounded-0">Delete user</a>
-        <a role="button" id ="createButton" href="../" class="btn btn-primary mb-2 btn-lg rounded-0">Create user</a>
+        <a role="button" id="deleteButton" href="../" class="btn btn-danger mb-2 btn-lg rounded-0">Delete user</a>
+        <a role="button" id="createButton" href="../" class="btn btn-primary mb-2 btn-lg rounded-0">Create user</a>
     </div>
 </main>
 
 <script>
-let URL = window.location.href
-let user = URL.split("?user=")[1]
-if (user != 0) {
-    document.getElementById("mainTitle").innerHTML = user
-    document.getElementById("email").value = user
-    document.getElementById("email").removeAttribute('readonly')
-    document.getElementById("createButton").style.display = 'none'; 
-}else{
-    document.getElementById("email").removeAttribute('readonly')
-    document.getElementById("mainTitle").innerHTML = "Create new user" 
-    document.getElementById("deleteButton").style.display = 'none'; 
-}
- 
+    let URL = window.location.href
+    let user = URL.split("?user=")[1]
+    if (user != 0) {
+        document.getElementById("mainTitle").innerHTML = user
+        document.getElementById("email").value = user
+        document.getElementById("email").removeAttribute('readonly')
+        document.getElementById("createButton").style.display = 'none';
+    } else {
+        document.getElementById("email").removeAttribute('readonly')
+        document.getElementById("mainTitle").innerHTML = "Create new user"
+        document.getElementById("deleteButton").style.display = 'none';
+    }
 </script>
