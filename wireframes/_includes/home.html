@@ -16,7 +16,7 @@ nav: Home
             <div class="col-md-8">
                 <div class="input-group mb-3">
                     <label for="search" class="sr-only">Search</label>
-                    <input id='search' type="text" onkeyup="filterList()" class="form-control form-control-lg"
+                    <input id='search' type="text" onkeyup="filterList('datasetList')" class="form-control form-control-lg"
                         placeholder="Search for a dataset" autocomplete="off">
                 </div>
             </div>
@@ -27,7 +27,7 @@ nav: Home
                 {% endif %}
             </div>
         </div>
-        <ul id = "dataset-list" class="list-group list-group-flush">
+        <ul id = "datasetList" class="list-group list-group-flush">
             {%- for item in datasets -%}
             <li class='list-group-item h3 font-weight-normal' id='listItem'>
                 <a class='text-decoration-underline'
@@ -37,27 +37,3 @@ nav: Home
         </ul>
     </div>
 </main>
-<script>
-    function filterList() {
-        // Declare variables
-        let input, filter, ul, li, a, i, txtValue;
-        input = document.getElementById('search');
-        filter = input.value.toUpperCase();
-        ul = document.getElementById("dataset-list");
-        li = ul.getElementsByTagName('li');
-        console.log(li)
-
-        // Loop through all list items, and hide those who don't match the search query
-        for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByTagName("a")[0];
-            console.log(a)
-            txtValue = a.textContent || a.innerText;
-            console.log(txtValue)
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = "";
-            } else {
-                li[i].style.display = "none";
-            }
-        }
-    }
-</script>

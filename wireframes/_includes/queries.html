@@ -30,12 +30,12 @@ nav: Queries
                     <h3 class="mt-4 h4">Select dataset</h3>
                     <div class="input-group mb-2">
                         <label for="search" class="sr-only">Search</label>
-                        <input id="search" type="text" onkeyup="filterList()" class="form-control"
+                        <input id="search" type="text" onkeyup="filterList('queryList')" class="form-control"
                             placeholder="Search for a dataset" autocomplete="off">
                     </div>
                     <fieldset>
                         <legend class="sr-only">List of datasets</legend>
-                        <div id="singleDatasetList" tabindex="0" class="form-list p-2 border mb-4">
+                        <div id="queryList" tabindex="0" class="form-list p-2 border mb-4">
                             {%- for item in datasets -%}
                             <label for='{{item.datasetID}}'> <input type='radio' id='{{item.datasetID}}'
                                     name='{{item.datasetName}}'> {{item.datasetName}}</label>
@@ -65,30 +65,30 @@ nav: Queries
     </div>
 </main>
 <script>
-    function filterList() {
-        // Declare variables
-        let input, filter, ul, li, a, i, txtValue;
-        input = document.getElementById('search');
-        filter = input.value.toUpperCase();
-        ul = document.getElementById("singleDatasetList");
-        li = ul.getElementsByTagName('input');
-        label = ul.getElementsByTagName('label');
+    // function filterList() {
+    //     // Declare variables
+    //     let input, filter, ul, li, a, i, txtValue;
+    //     input = document.getElementById('search');
+    //     filter = input.value.toUpperCase();
+    //     ul = document.getElementById("singleDatasetList");
+    //     li = ul.getElementsByTagName('input');
+    //     label = ul.getElementsByTagName('label');
 
-        for (i = 0; i < li.length; i++) {
-            txtValue = li[i].name;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = "";
-            } else {
-                li[i].style.display = "none";
-            }
-        }
-        for (i = 0; i < label.length; i++) {
-            txtValue = label[i].textContent;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                label[i].style.display = "";
-            } else {
-                label[i].style.display = "none";
-            }
-        }
-    }
+    //     for (i = 0; i < li.length; i++) {
+    //         txtValue = li[i].name;
+    //         if (txtValue.toUpperCase().indexOf(filter) > -1) {
+    //             li[i].style.display = "";
+    //         } else {
+    //             li[i].style.display = "none";
+    //         }
+    //     }
+    //     for (i = 0; i < label.length; i++) {
+    //         txtValue = label[i].textContent;
+    //         if (txtValue.toUpperCase().indexOf(filter) > -1) {
+    //             label[i].style.display = "";
+    //         } else {
+    //             label[i].style.display = "none";
+    //         }
+    //     }
+    // }
 </script>

@@ -16,7 +16,7 @@ nav: Users
             <div class="col-md-8">
                 <div class="input-group mb-3">
                     <label for="search" class="sr-only">Search</label>
-                    <input id='search' type="text" onkeyup="filterList()" class="form-control form-control-lg"
+                    <input id='search' type="text" onkeyup="filterList('list')" class="form-control form-control-lg"
                         placeholder="Search for a user" autocomplete="off">
                 </div>
             </div>
@@ -32,25 +32,3 @@ nav: Users
             </div>
         </div>
 </main>
-
-<script>
-    function filterList() {
-        // Declare variables
-        let input, filter, ul, li, a, i, txtValue;
-        input = document.getElementById('search');
-        filter = input.value.toUpperCase();
-        ul = document.getElementById("list");
-        li = ul.getElementsByTagName('li');
-
-        // Loop through all list items, and hide those who don't match the search query
-        for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByTagName("a")[0];
-            txtValue = a.textContent || a.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = "";
-            } else {
-                li[i].style.display = "none";
-            }
-        }
-    }
-</script>
