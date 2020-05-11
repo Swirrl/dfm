@@ -8,7 +8,7 @@ nav: Home
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-4 font-weight-bold" id="mainTitle">Dataset</h1>
-            <p>Last updated: 14/05/2020 (<a href = "#">previous versions</a>)</p>
+            <p>Last updated: 14/05/2020 (<a id = "previous" href = "previous">previous versions</a>)</p>
         </div>
     </div>
     <div class="container">
@@ -89,6 +89,7 @@ nav: Home
         if (window.location.href.indexOf("authenticated") > -1) {
             document.getElementById("dependencies").href = "dependencies/index.html?id=" + dataset
         }
+        document.getElementById("previous").href = "previous?id=" + dataset
         fetch('/assets/datasets.json')
             .then(response => response.json())
             .then(input => {

@@ -1,0 +1,33 @@
+---
+layout: basic
+title: Previous versions
+nav: Home
+---
+
+<main role="main" id="content">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 id="title" class="display-4 font-weight-bold" id="mainTitle">Dataset</h1>
+      <p>Last updated: 14/05/2020 (<a id="latest" href="../">latest version</a>)</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <h2></h2>
+        {%- for item in previous -%}
+        <p><a href="../">
+            Version {{item.version}} </a><br>Created: {{item.date}}
+        </p>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  let URL = window.location.href
+  let dataset = URL.split("?id=")[1]
+  document.getElementById("latest").href = "../?id=" + dataset
+  document.getElementById("title").innerHTML = " Previous versions (ID: " + dataset + ")"
+</script>
