@@ -8,7 +8,7 @@ nav: Home
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-4 font-weight-bold" id="mainTitle">Dataset</h1>
-            <p>Last updated: 14/05/2020 (<a id = "previous" href = "previous">previous versions</a>)</p>
+            <p><span id ="updateDate">Last updated: 14/05/2020</span> (<a id = "previous" href = "previous">previous versions</a>)</p>
         </div>
     </div>
     <div class="container">
@@ -69,6 +69,77 @@ nav: Home
                         <input id="pia" type="text" class="form-control">
                         {% endif %}
                     </div>
+
+
+
+                    <div class="form-group pb-1">
+                        <label for="datasetType" class="form-label">datasetType</label>
+                        {% if loggedIn == false %}
+                        <input id="datasetType" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="datasetType" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="contactName" class="form-label">contactName</label>
+                        {% if loggedIn == false %}
+                        <input id="contactName" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="contactName" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="contactEmail" class="form-label">contactEmail</label>
+                        {% if loggedIn == false %}
+                        <input id="contactEmail" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="contactEmail" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="published" class="form-label">published</label>
+                        {% if loggedIn == false %}
+                        <input id="published" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="published" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="link" class="form-label">link</label>
+                        {% if loggedIn == false %}
+                        <input id="link" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="link" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="description" class="form-label">description</label>
+                        {% if loggedIn == false %}
+                        <input id="description" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="description" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="metadataCatalogueReference" class="form-label">metadataCatalogueReference</label>
+                        {% if loggedIn == false %}
+                        <input id="metadataCatalogueReference" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="metadataCatalogueReference" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="objective" class="form-label">objective</label>
+                        {% if loggedIn == false %}
+                        <input id="objective" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="objective" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+
+
+
+
                     {% if loggedIn == true %}
                     <a role="button" href="../" class="btn btn-primary mb-2 btn-lg rounded-0">Save and publish</a> <a class="p-3"
                         href="../">Cancel</a>
@@ -100,6 +171,15 @@ nav: Home
                 document.getElementById("inputOwner").value = dataset.ownerName
                 document.getElementById("input").value = dataset.uses
                 document.getElementById("licence").value = dataset.licence
+                document.getElementById("datasetType").value = dataset.datasetType
+                document.getElementById("contactName").value = dataset.contactName
+                document.getElementById("contactEmail").value = dataset.contactEmail
+                document.getElementById("published").value = dataset.published
+                document.getElementById("link").value = dataset.link
+                document.getElementById("description").value = dataset.description
+                document.getElementById("metadataCatalogueReference").value = dataset.metadataCatalogueReference
+                document.getElementById("objective").value = dataset.objective
+                document.getElementById("updateDate").innerHTML = "Last updated: " + dataset.updateDate
                 if (dataset.pia === "y") {
                     document.getElementById("pia").value = "Yes"
                 } else {
