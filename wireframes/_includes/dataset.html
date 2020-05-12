@@ -16,16 +16,48 @@ nav: Home
             <div class="col-lg-8">
                 <h2 class="pb-3">About this dataset</h2>
                 <form>
-                    <div class="form-group">
-                        <label for="datasetTitle">Dataset title</label>
+                    <div class="form-group pb-1">
+                        <label for="datasetTitle" class="form-label">Dataset title</label>
+                        {% if loggedIn == false %}
                         <input id="datasetTitle" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="datasetTitle" type="text" class="form-control">
+                        {% endif %}
                     </div>
                     <div class="form-group pb-1">
-                        <label for="inputOwner">Owner</label>
+                        <label for="metadataCatalogueReference" class="form-label">Metadata catalogue reference</label>
                         {% if loggedIn == false %}
-                        <input id="inputOwner" type="text" class="form-control" readonly>
+                        <input id="metadataCatalogueReference" type="text" class="form-control" readonly>
                         {% else %}
-                        <input id="inputOwner" type="text" class="form-control">
+                        <input id="metadataCatalogueReference" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="link" class="form-label">Link to dataset</label>
+                        {% if loggedIn == false %}
+                        <input id="link" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="link" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="datasetType" class="form-label">Dataset type</label>
+                        {% if loggedIn == false %}
+                        <input id="datasetType" type="text" class="form-control" readonly>
+                        {% else %}
+                        <select class="form-control" id="datasetType">
+                            <option selected disabled>Please choose an option</option>
+                            <option>dataset</option>
+                            <option>reference</option>
+                        </select>
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="description" class="form-label">Description</label>
+                        {% if loggedIn == false %}
+                        <textarea class="form-control" id="description" rows="5" readonly></textarea>
+                        {% else %}
+                        <textarea class="form-control" id="description" rows="5"></textarea>
                         {% endif %}
                     </div>
                     <div class="form-group pb-1">
@@ -40,17 +72,43 @@ nav: Home
                             class="btn btn-primary rounded-0 mb-2 mt-2">Add/edit input datasets</a>
                         {% endif %}
                     </div>
-                </form>
-                <h2 class="pb-3">Usage and licence</h2>
-                <form>
                     <div class="form-group">
+                        <label for="datasetID">Dataset ID</label>
+                        <input id="datasetID" type="text" class="form-control" readonly>
+                    </div>
+                <h2 class="pb-3">Ownership</h2>
+                    <div class="form-group pb-1">
+                        <label for="inputOwner">Owner</label>
+                        {% if loggedIn == false %}
+                        <input id="inputOwner" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="inputOwner" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="contactName" class="form-label">Contact name</label>
+                        {% if loggedIn == false %}
+                        <input id="contactName" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="contactName" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="contactEmail" class="form-label">Contact email</label>
+                        {% if loggedIn == false %}
+                        <input id="contactEmail" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="contactEmail" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                <h2 class="pb-3">Usage</h2>
+                    <div class="form-group">
+                        <label for="licence">Licence</label>
                         {% if loggedIn == false %}
                         <div class="form-group pb-1">
-                            <label for="licence">Licence</label>
                             <input id="licence" type="text" class="form-control" readonly>
                         </div>
-                        {% else %}
-                        <label for="licence">Licence</label>
+                        {% else %}   
                         <select class="form-control" id="licence">
                             <option selected disabled>Please choose an option</option>
                             <option>http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</option>
@@ -69,35 +127,8 @@ nav: Home
                         <input id="pia" type="text" class="form-control">
                         {% endif %}
                     </div>
-
-
-
                     <div class="form-group pb-1">
-                        <label for="datasetType" class="form-label">datasetType</label>
-                        {% if loggedIn == false %}
-                        <input id="datasetType" type="text" class="form-control" readonly>
-                        {% else %}
-                        <input id="datasetType" type="text" class="form-control">
-                        {% endif %}
-                    </div>
-                    <div class="form-group pb-1">
-                        <label for="contactName" class="form-label">contactName</label>
-                        {% if loggedIn == false %}
-                        <input id="contactName" type="text" class="form-control" readonly>
-                        {% else %}
-                        <input id="contactName" type="text" class="form-control">
-                        {% endif %}
-                    </div>
-                    <div class="form-group pb-1">
-                        <label for="contactEmail" class="form-label">contactEmail</label>
-                        {% if loggedIn == false %}
-                        <input id="contactEmail" type="text" class="form-control" readonly>
-                        {% else %}
-                        <input id="contactEmail" type="text" class="form-control">
-                        {% endif %}
-                    </div>
-                    <div class="form-group pb-1">
-                        <label for="published" class="form-label">published</label>
+                        <label for="published" class="form-label">Published</label>
                         {% if loggedIn == false %}
                         <input id="published" type="text" class="form-control" readonly>
                         {% else %}
@@ -105,41 +136,13 @@ nav: Home
                         {% endif %}
                     </div>
                     <div class="form-group pb-1">
-                        <label for="link" class="form-label">link</label>
-                        {% if loggedIn == false %}
-                        <input id="link" type="text" class="form-control" readonly>
-                        {% else %}
-                        <input id="link" type="text" class="form-control">
-                        {% endif %}
-                    </div>
-                    <div class="form-group pb-1">
-                        <label for="description" class="form-label">description</label>
-                        {% if loggedIn == false %}
-                        <input id="description" type="text" class="form-control" readonly>
-                        {% else %}
-                        <input id="description" type="text" class="form-control">
-                        {% endif %}
-                    </div>
-                    <div class="form-group pb-1">
-                        <label for="metadataCatalogueReference" class="form-label">metadataCatalogueReference</label>
-                        {% if loggedIn == false %}
-                        <input id="metadataCatalogueReference" type="text" class="form-control" readonly>
-                        {% else %}
-                        <input id="metadataCatalogueReference" type="text" class="form-control">
-                        {% endif %}
-                    </div>
-                    <div class="form-group pb-1">
-                        <label for="objective" class="form-label">objective</label>
+                        <label for="objective" class="form-label">Dataset objective</label>
                         {% if loggedIn == false %}
                         <input id="objective" type="text" class="form-control" readonly>
                         {% else %}
                         <input id="objective" type="text" class="form-control">
                         {% endif %}
                     </div>
-
-
-
-
                     {% if loggedIn == true %}
                     <a role="button" href="../" class="btn btn-primary mb-2 btn-lg rounded-0">Save and publish</a> <a class="p-3"
                         href="../">Cancel</a>
@@ -167,6 +170,7 @@ nav: Home
                 let data = input;
                 let dataset = data.find(findDataset)
                 document.getElementById("mainTitle").innerHTML = dataset.datasetName
+                document.getElementById("datasetID").value = dataset.datasetID
                 document.getElementById("datasetTitle").value = dataset.datasetName
                 document.getElementById("inputOwner").value = dataset.ownerName
                 document.getElementById("input").value = dataset.uses
