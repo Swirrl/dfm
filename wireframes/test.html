@@ -1,0 +1,88 @@
+---
+layout: basic
+loggedIn: false
+---
+
+<svg id="diagram" width="1000" height="300">
+</svg>
+
+<script>
+    const dataset = "dataset1";
+
+    const datasetInput = [{
+        "name": "dataset2"
+    }, {
+        "name": "dataset3"
+    }, {
+        "name": "dataset4"
+    }, {
+        "name": "dataset5"
+    }]
+    const datasetOutput = [{
+        "name": "dataset6"
+    }, {
+        "name": "dataset7"
+    }, {
+        "name": "dataset7"
+    }]
+
+    const boxYGap = 10;
+    const boxXGap = 10;
+    const boxHeight = 50;
+    const boxWidth = 200;
+    const padding = 15;
+    const textPadding = 20;
+    const outputDistance = 800;
+    const thisDataset = (outputDistance)/2;
+    const boxColour = "black";
+
+    let countOfInput = datasetInput.length
+    let countOfOutput = datasetOutput.length
+
+    let inputSVGDetail = ""
+    let outputSVGDetail = ""
+
+    let x = boxXGap + thisDataset ;
+    let y = boxYGap
+    let textX = boxXGap + textPadding + thisDataset
+    let textY = boxYGap + textPadding
+    thisDatasetSVGDetail =  
+            "<rect x='"+ x +"' y='"+ y +"' width='"+ boxWidth +"' height='"+ boxHeight +"' stroke='black' stroke-width='0' fill='"+boxColour+"' />" +
+            "<text x='"+ textX +"' y='"+ textY +"' fill='white'> "+ dataset +" </text>" 
+
+    for (i=0; i<countOfInput; i++){
+        let x = boxXGap ;
+        let y = boxYGap + ((boxHeight + padding) * i);
+        let width = boxWidth
+        let height = boxHeight
+        let textX = boxXGap + textPadding
+        let textY = (boxYGap + textPadding) + ((boxHeight + padding) * i);
+        let lineX1 = boxWidth + boxYGap
+        let lineX2 = boxHeight/2 + boxYGap + ((boxHeight + padding) * i);
+        let lineY1 = boxXGap + thisDataset;
+        let lineY2 = boxHeight/2 + boxYGap;
+        inputSVGDetail = inputSVGDetail + 
+            "<rect x='"+ x +"' y='"+ y +"' width='"+ width +"' height='"+ height +"' stroke='black' stroke-width='0' fill='"+boxColour+"' />" +
+            "<text x='"+ textX +"' y='"+ textY +"' fill='white'> "+ datasetInput[i].name +" </text>" +
+            "<line x1='" + lineX1 + "' y1='" + lineX2 + "' x2='" + lineY1 + "' y2='" + lineY2 + "' style='stroke:rgb(255,0,0);stroke-width:2' />"
+    }
+
+    for (i=0; i<countOfOutput; i++){
+        let x = boxXGap  + outputDistance;
+        let y = boxYGap + ((boxHeight + padding) * i);
+        let width = boxWidth
+        let height = boxHeight
+        let textX = boxXGap + textPadding +  + outputDistance
+        let textY = (boxYGap + textPadding) + ((boxHeight + padding) * i);
+        let lineX1 = boxXGap + thisDataset + boxWidth;
+        let lineX2 = boxHeight/2 + boxYGap;
+        let lineY1 = x;
+        let lineY2 = boxHeight/2 + boxYGap + ((boxHeight + padding) * i);
+        outputSVGDetail = outputSVGDetail + 
+            "<rect x='"+ x +"' y='"+ y +"' width='"+ width +"' height='"+ height +"' stroke='black' stroke-width='0' fill='"+boxColour+"' />" +
+            "<text x='"+ textX +"' y='"+ textY +"' fill='white'> "+ datasetOutput[i].name +" </text>" +
+           "<line x1='" + lineX1 + "' y1='" + lineX2 + "' x2='" + lineY1 + "' y2='" + lineY2 + "' style='stroke:rgb(255,0,0);stroke-width:2' />"
+   }
+
+    document.getElementById('diagram').innerHTML = inputSVGDetail + thisDatasetSVGDetail + outputSVGDetail
+</script>
