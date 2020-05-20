@@ -292,8 +292,8 @@ nav: Datasets
         let lineY1 = x;
         let lineY2 = boxHeight/2 + boxYGap + ((boxHeight + padding) * i);
         outputSVGDetail = outputSVGDetail + 
-            "<rect x='"+ x +"' y='"+ y +"' width='"+ width +"' height='"+ height +"' stroke='"+boxStroke+"' stroke-width='"+boxStrokeWidth+"' fill='"+boxColour+"' />" +
-            "<text x='"+ textX +"' y='"+ textY +"' fill='"+textColour+"'> "+ datasetOutput[i].name +" </text>" +
+            "<a href='/datasets/dataset/?id="+ datasetInput[i].name +"&new='><rect x='"+ x +"' y='"+ y +"' width='"+ width +"' height='"+ height +"' stroke='"+boxStroke+"' stroke-width='"+boxStrokeWidth+"' fill='"+boxColour+"' /></a>" +
+            "<a href='/datasets/dataset/?id="+ datasetInput[i].name +"&new='><text x='"+ textX +"' y='"+ textY +"' fill='"+textColour+"'> "+ datasetOutput[i].name +" </text></a>" +
            "<line x1='" + lineX1 + "' y1='" + lineX2 + "' x2='" + lineY1 + "' y2='" + lineY2 + "' style='"+linkColour+";stroke-width:2' />"
    }
 
