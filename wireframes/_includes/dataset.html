@@ -244,7 +244,11 @@ nav: Datasets
     const outputDistance = 540;
     const thisDataset = (outputDistance)/2;
     const thisDatasetHeight = (Math.min(countOfInput,countOfOutput)/2)*boxHeight
-    const boxColour = "black";
+    const boxColour = "#e9ecef";
+    const linkColour = "stroke:rgb(0,0,0)";
+    const textColour = "";
+    const boxStroke = "#1c52a4";
+    const boxStrokeWidth = 2
 
 
 
@@ -256,8 +260,8 @@ nav: Datasets
     let textX = boxXGap + textPadding + thisDataset;
     let textY = boxYGap + textPadding + thisDatasetHeight;
     thisDatasetSVGDetail =  
-            "<rect x='"+ x +"' y='"+ y +"' width='"+ boxWidth +"' height='"+ boxHeight +"' stroke='black' stroke-width='0' fill='"+boxColour+"' />" +
-            "<text x='"+ textX +"' y='"+ textY +"' fill='white'> "+ dataset +" </text>" 
+            "<rect x='"+ x +"' y='"+ y +"' width='"+ boxWidth +"' height='"+ boxHeight +"' stroke='"+boxStroke+"' stroke-width='"+boxStrokeWidth+"' fill='"+boxColour+"' />" +
+            "<text x='"+ textX +"' y='"+ textY +"' fill='"+textColour+"'> "+ dataset +" </text>" 
 
     for (i=0; i<countOfInput; i++){
         let x = boxXGap ;
@@ -271,9 +275,9 @@ nav: Datasets
         let lineY1 = boxXGap + thisDataset;
         let lineY2 = boxHeight/2 + boxYGap + thisDatasetHeight;
         inputSVGDetail = inputSVGDetail + 
-            "<a href='/datasets/dataset/?id="+ datasetInput[i].name +"&new='><rect x='"+ x +"' y='"+ y +"' width='"+ width +"' height='"+ height +"' stroke='black' stroke-width='0' fill='"+boxColour+"' /></a>" +
-            "<a href='/datasets/dataset/?id="+ datasetInput[i].name +"&new='><text x='"+ textX +"' y='"+ textY +"' fill='white'> "+ datasetInput[i].name +" </text></a>" +
-            "<line x1='" + lineX1 + "' y1='" + lineX2 + "' x2='" + lineY1 + "' y2='" + lineY2 + "' style='stroke:rgb(255,0,0);stroke-width:2' />"
+            "<a href='/datasets/dataset/?id="+ datasetInput[i].name +"&new='><rect x='"+ x +"' y='"+ y +"' width='"+ width +"' height='"+ height +"' stroke='"+boxStroke+"' stroke-width='"+boxStrokeWidth+"' fill='"+boxColour+"' /></a>" +
+            "<a href='/datasets/dataset/?id="+ datasetInput[i].name +"&new='><text x='"+ textX +"' y='"+ textY +"' fill='"+textColour+"'> "+ datasetInput[i].name +" </text></a>" +
+            "<line x1='" + lineX1 + "' y1='" + lineX2 + "' x2='" + lineY1 + "' y2='" + lineY2 + "' style='"+linkColour+";stroke-width:2' />"
     }
 
     for (i=0; i<countOfOutput; i++){
@@ -288,9 +292,9 @@ nav: Datasets
         let lineY1 = x;
         let lineY2 = boxHeight/2 + boxYGap + ((boxHeight + padding) * i);
         outputSVGDetail = outputSVGDetail + 
-            "<rect x='"+ x +"' y='"+ y +"' width='"+ width +"' height='"+ height +"' stroke='black' stroke-width='0' fill='"+boxColour+"' />" +
-            "<text x='"+ textX +"' y='"+ textY +"' fill='white'> "+ datasetOutput[i].name +" </text>" +
-           "<line x1='" + lineX1 + "' y1='" + lineX2 + "' x2='" + lineY1 + "' y2='" + lineY2 + "' style='stroke:rgb(255,0,0);stroke-width:2' />"
+            "<rect x='"+ x +"' y='"+ y +"' width='"+ width +"' height='"+ height +"' stroke='"+boxStroke+"' stroke-width='"+boxStrokeWidth+"' fill='"+boxColour+"' />" +
+            "<text x='"+ textX +"' y='"+ textY +"' fill='"+textColour+"'> "+ datasetOutput[i].name +" </text>" +
+           "<line x1='" + lineX1 + "' y1='" + lineX2 + "' x2='" + lineY1 + "' y2='" + lineY2 + "' style='"+linkColour+";stroke-width:2' />"
    }
 
     document.getElementById('diagram').innerHTML = inputSVGDetail + thisDatasetSVGDetail + outputSVGDetail
