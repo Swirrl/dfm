@@ -13,6 +13,8 @@
                     </button>
                 </div>
             </div>
+            {{nav}}
+            {% if nav != "Home" %}
             <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar7">
                 <ul class="navbar-nav ml-auto flex-nowrap">
                     {%- for item in menu.main -%}
@@ -21,7 +23,6 @@
                             class="nav-link nav-link {% if nav == item.name %}active{% endif %}">{{item.name}}</a>
                     </li>
                     {%- endfor -%}
-
                     {% if loggedIn == true %}
                     {%- for item in menu.loggedIn -%}
                     <li class="nav-item">
@@ -43,8 +44,10 @@
                         <a href="/" class="nav-link">{{site.user}} (logout)</a>
                     </li>
                     {% endif %}
+                    
                 </ul>
             </div>
+            {% endif %}
         </div>
     </nav>
 </header>

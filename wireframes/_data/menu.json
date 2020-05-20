@@ -1,6 +1,6 @@
 {
     "main": [{
-            "name": "Home",
+            "name": "Datasets",
             "url": "/"
         },
         {
@@ -11,6 +11,6 @@
     "loggedIn": [],
     "login": [{
         "name": "Login",
-        "url": "/login"
+        "url": "/auth0"
     }]
 }
