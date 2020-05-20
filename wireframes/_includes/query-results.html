@@ -14,7 +14,6 @@ nav: Queries
         <div class="row">
             <div class="col-sm-12">
                 <h2 id="query"></h2>
-                <h3 id="dataset"></h3>
                 <div class="p-3 mb-2 bg-light text-dark" style="height: 400px"><br>{query results go here}</div>
             </div>
         </div>
@@ -23,15 +22,9 @@ nav: Queries
 <script>
     let URL = window.location.href
     let parameters = decodeURIComponent(URL.split("?")[1])
-    let query = parameters.split("=")[0]
-    let dataset = parameters.split("&")[1]
+    let query = parameters.split("=")[1]
 
     query = query.replace(/\+/g, ' ');
     document.getElementById("query").innerHTML = query
 
-    if (dataset != null) {
-        dataset = dataset.split("=")[0]
-        dataset = dataset.replace(/\+/g, ' ');
-        document.getElementById("dataset").innerHTML = dataset
-    }
 </script>

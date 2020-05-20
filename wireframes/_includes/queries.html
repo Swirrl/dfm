@@ -14,52 +14,25 @@ nav: Queries
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
-                <h2 class="mb-4">Query a single dataset</h2>
-                <form action="results">
-                    <fieldset>
-                        <legend class="h4">Select query</legend>
-                        <div class="form-group">
-                            {%- for item in queries.oneDataset -%}
-                            <label for="{{item.name}}"><input type="radio" id="{{item.name}}" name="{{item.name}}">
-                                {{item.name}}
-                            </label>
-                            {%- endfor -%}
-                        </div>
-                    </fieldset>
-                    <h3 class="mt-4 h4">Select dataset</h3>
-                    <div class="input-group mb-2">
-                        <label for="search" class="sr-only">Search</label>
-                        <input id="search" type="text" onkeyup="filterList('queryList')" class="form-control"
-                            placeholder="Search for a dataset" autocomplete="off">
-                    </div>
-                    <fieldset>
-                        <legend class="sr-only">List of datasets</legend>
-                        <div id="queryList" tabindex="0" class="form-list p-2 border mb-4">
-                            {%- for item in datasets -%}
-                            <label for='{{item.datasetID}}'> <input type='radio' id='{{item.datasetID}}'
-                                    name='{{item.datasetName}}'> {{item.datasetName}}</label>
-                            {%- endfor -%}
-                        </div>
-                    </fieldset>
-                    <button type="submit" class="btn btn-primary rounded-0">Run query</button>
-                </form>
+            <div class="col-md-8">
+                <div class="input-group mb-3">
+                    <label for="search" class="sr-only">Search</label>
+                    <input id='search' type="text" onkeyup="filterList('queryList')"
+                        class="form-control form-control-lg" placeholder="Search for a dataset" autocomplete="off">
+                </div>
             </div>
-            <div class="col-sm-6">
-                <h2 class="mb-4">Query all datasets</h2>
-                <form action="results">
-                    <fieldset>
-                        <legend class="h4">Select query</legend>
-                        <div class="form-group">
-                            {%- for item in queries.allDatasets -%}
-                            <label for="{{item.name}}"><input type="radio" id="{{item.name}}" name="{{item.name}}">
-                                {{item.name}}</label>
-                            {%- endfor -%}
-                        </div>
-                    </fieldset>
-                    <button type="submit" class="btn btn-primary rounded-0">Run query</button>
-                </form>
-            </div>
+            <!-- <div class="col-md-3 offset-md-1">
+                {% if loggedIn == true %}
+                <a class="btn btn-primary mb-2 btn-lg rounded-0" href="dataset?id=">Create new query</a>
+                {% endif %}
+            </div> -->
         </div>
+        <ul id="queryList" class="list-group list-group-flush">
+            {%- for item in queries.allDatasets -%}
+            <li class='list-group-item h3 font-weight-normal' id='listItem'>
+                <a class='text-decoration-underline' href='results?query={{item.name}}'>{{item.name}}</a>
+            </li>
+            {%- endfor -%}
+        </ul>
     </div>
 </main>
