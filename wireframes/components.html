@@ -1,0 +1,50 @@
+---
+layout: basic
+loggedIn: false
+title: Components
+---
+
+<main role="main" id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mt-5">
+
+                <h1>{{ title }}</h1>
+                <br>
+                <h2>Notes</h2>
+                <ul>
+                    <li>Form labels and inputs must be associated</li>
+                    <li>Multiple owner pattern</li>
+                    <li>Footer text needs to be darker to meet contrast standards</li>
+                </ul>
+                <br>
+                <hr>
+                <br>
+                <h2>Form labels and inputs must be associated</h2>
+                <div class="form-group pb-1">
+                    <label class="form-label" for="91d0fb43-209c-477f-91e3-74e756296268">Input datasets</label>
+                    <input class="form-control" id="91d0fb43-209c-477f-91e3-74e756296268" name="91d0fb43-209c-477f-91e3-74e756296268" readonly="" type="text" value="91d0fb43-209c-477f-91e3-74e756296268">
+                </div>
+                <br>
+                <hr>
+                <br>
+                <h2>Multiple owner pattern</h2>
+                <div class="form-group pb-1">
+                    <label class="form-label" for="owner">Owner</label>
+                    <input class="form-control" id="owner" name="martin-whitworth" readonly="" type="text" value="Martin Whitworth (Deputy Director)">
+                </div>
+
+                <div class="form-group pb-1">
+                    <label class="form-label" for="owner-2">Owner 2</label>
+                    <input class="form-control" id="owner-2" name="catherine-fileman-wright" readonly="" type="text" value="Catherine Fileman-Wright (Director)">
+                </div>
+                <br>
+                <hr>
+                <br>
+                <h2>Footer text needs to be darker to meet contrast standards</h2>
+                <p>Text and links in footer should be {{ tokens.textSecondary }}.</p>
+                {% include footer.html %}
+            </div>
+        </div>
+    </div>
+</main>
