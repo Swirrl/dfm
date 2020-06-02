@@ -1,18 +1,29 @@
+---
+permalink: "assets/css/style.css"
+---
+
 /* Typography */
 
 /* Update font stack to use common system san-serifs */
+
 body {
   font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 /* Making lead weight normal, because 300 is too thin for readability */
+
 .lead {
   font-weight: normal;
+}
+
+.text-secondary {
+  color: {{ tokens.textSecondary }} !important;
 }
 
 /* Colours */
 
 /* Overwrite bootstrap class to be darker */
+
 .bg-light {
   background-color: #e9ecef !important;
 }
@@ -33,9 +44,7 @@ a:hover {
 
 /* Buttons */
 
-.btn-primary,
-.btn-primary.disabled,
-.btn-primary:disabled {
+.btn-primary, .btn-primary.disabled, .btn-primary:disabled {
   background-color: #1c52a4;
   border-color: #1c52a4;
 }
@@ -48,16 +57,19 @@ a:hover {
 /* Header */
 
 /* Update header background to match EA's logo */
+
 .bg-dark {
   background-color: #0b0d0d !important;
 }
 
 /* Add underline on mouse hover to nav links */
+
 .nav-link:hover {
   text-decoration: underline;
 }
 
 /* Breadcrumbs */
+
 .breadcrumb-item.active {
   color: #42474C !important;
 }
@@ -86,8 +98,7 @@ form {
   border-color: #343a40;
 }
 
-.form-control::placeholder,
-.form-control {
+.form-control::placeholder, .form-control {
   opacity: 1;
   color: #292d33;
 }
