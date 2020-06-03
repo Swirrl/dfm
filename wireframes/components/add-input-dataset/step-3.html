@@ -1,0 +1,55 @@
+---
+layout: basic
+loggedIn: false
+title: Add input dataset
+---
+
+<main role="main" id="content">
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-4 font-weight-bold">{{ title }}</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mt-2">
+
+                <form role="search">
+                    <label class="h4" for="search-datasets">Search datasets</label>
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <input id="search-datasets" type="search" value="National" class="form-control form-control-lg rounded-0">
+                        </div>
+                        <div class="col-auto form-group">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-0">Search</button>
+                        </div>
+                    </div>
+                </form>
+
+                <form class="mt-4">
+                    <p>2 results</p>
+                    <ul class="border-bottom list-unstyled mb-5">
+                        <li class="form-check border-top py-3">
+                            <input class="form-check-input" type="checkbox" value="" id="result1">
+                            <label class="form-check-label h5" for="result1">
+                                National Receptors Dataset 2014 (Partner Version)
+                            </label>
+                        </li>
+                        <li class="form-check border-top py-3">
+                            <input class="form-check-input" type="checkbox" value="" id="result2">
+                            <label class="form-check-label h5" for="result2">
+                                National Something Else Example Dataset 2012
+                            </label>
+                        </li>
+                    </ul>
+                    <button type="submit" class="btn btn-primary btn-lg rounded-0 mb-2">Add selected datasets</button>
+                    <p>Changes won’t be published yet</p>
+                </form>
+                <p><a href="#">Cancel</a></p>
+            </div>
+        </div>
+    </div>
+
+</main>
