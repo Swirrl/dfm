@@ -1,0 +1,37 @@
+---
+layout: basic
+loggedIn: false
+title: Add input dataset
+---
+
+<main role="main" id="content">
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-4 font-weight-bold">{{ title }}</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mt-2">
+
+                <form role="search" action="/components/add-input-dataset/step-3/">
+                    <label class="h4" for="search-datasets">Search datasets</label>
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <input id="search-datasets" type="search" value="" class="form-control form-control-lg rounded-0">
+                        </div>
+                        <div class="col-auto form-group">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-0">Search</button>
+                        </div>
+                    </div>
+                </form>
+
+                <p><a href="/components/add-input-dataset/step-1">Cancel</a></p>
+
+            </div>
+        </div>
+    </div>
+
+</main>
