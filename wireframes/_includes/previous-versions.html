@@ -8,7 +8,7 @@ nav: Home
   <div class="jumbotron">
     <div class="container">
       <h1 id="title" class="display-4 font-weight-bold" id="mainTitle">Dataset</h1>
-      <p>Last updated: 14/05/2020 (<a id="latest" href="../">latest version</a>)</p>
+      <p>Last updated: 14/05/2020 (<a id="latest" href="../" class="text-decoration-underline">latest version</a>).</p>
     </div>
   </div>
   <div class="container">
@@ -16,7 +16,7 @@ nav: Home
       <div class="col-lg-8">
         <h2></h2>
         {%- for item in previous -%}
-        <p><a href="../">
+        <p><a href="../" class="text-decoration-underline">
             Version {{item.version}} </a><br>Created: {{item.date}}
         </p>
         {%- endfor -%}
