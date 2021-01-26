@@ -1,0 +1,160 @@
+/* TYPOGRAPHY */
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Make .lead weight normal, because 300 is too thin for readability */
+.lead {
+  font-weight: normal;
+}
+
+.text-secondary {
+  color: #42474c !important;
+}
+
+/* COLOURS */
+
+/* Overwrite bootstrap class to be darker */
+.bg-light {
+  background-color: #e9ecef !important;
+}
+
+/* LINKS */
+
+.text-decoration-underline {
+  text-decoration: underline;
+}
+
+a {
+  color: #1d70b8;
+}
+
+a:hover {
+  color: #003078;
+}
+
+/* BUTTONS */
+
+.btn {
+  transition: none;
+  border-radius: 0;
+}
+
+.btn-primary,
+.btn-primary.disabled,
+.btn-primary:disabled {
+  background-color: #1d70b8;
+  border-color: #1d70b8;
+}
+
+.btn-primary:hover {
+  background-color: #003078;
+  border-color: #003078;
+}
+
+/* HEADER */
+
+/* Update header background to match EA's logo */
+.bg-dark {
+  background-color: #0b0c0c !important;
+}
+
+/* Add underline on mouse hover to nav links */
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+/* BREADCRUMBS */
+
+.breadcrumb-item.active {
+  color: #42474c !important;
+}
+
+/* FORMS */
+
+label {
+  display: block;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+.form-list {
+  max-height: 200px;
+  overflow: scroll;
+}
+
+.form-control {
+  border: 2px solid #42474c;
+  border-radius: 0;
+}
+
+.form-control:focus {
+  border-color: #42474c;
+}
+
+.form-control::placeholder,
+.form-control {
+  opacity: 1;
+  color: #0b0c0c;
+}
+
+.form-check-input,
+.form-check-label {
+  cursor: pointer;
+}
+
+/* SIGNIN FORM */
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding-top: 150px;
+  padding-bottom: 150px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* CODE */
+code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f8f8f8;
+  border-radius: 0;
+}
+
+/* JUMBOTRON */
+.jumbotron {
+  background-color: #f8f8f8;
+}
