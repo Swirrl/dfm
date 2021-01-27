@@ -8,7 +8,8 @@ nav: Datasets
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-4 font-weight-bold" id="mainTitle">Dataset</h1>
-            <p><span id ="updateDate">Last updated: 14/05/2020</span> by Rob Chambers (<a id = "previous" href = "previous">previous versions</a>)</p>
+            <p><span id="updateDate">Last updated: 14/05/2020</span> by Rob Chambers (<a id="previous"
+                    href="previous">previous versions</a>)</p>
         </div>
     </div>
     <div class="container">
@@ -25,21 +26,39 @@ nav: Datasets
                         {% endif %}
                     </div>
                     <div class="form-group pb-1">
-                        <label for="metadataCatalogueReference" class="form-label">Metadata catalogue reference</label>
+                        <label for="metadataCatalogueReference" class="form-label">Metadata or Application catalogue
+                            reference</label>
                         {% if loggedIn == false %}
                         <input id="metadataCatalogueReference" type="text" class="form-control" readonly>
                         {% else %}
                         <input id="metadataCatalogueReference" type="text" class="form-control">
                         {% endif %}
                     </div>
-                    <div class="form-group pb-1">
+                    <!-- <div class="form-group pb-1">
                         <label for="link" class="form-label">Link to dataset</label>
                         {% if loggedIn == false %}
                         <input id="link" type="text" class="form-control" readonly>
                         {% else %}
                         <input id="link" type="text" class="form-control">
                         {% endif %}
-                    </div>
+                    </div> -->
+                    <div class="form-group pb-1">
+                    <fieldset>
+                        <legend>Related links</legend>
+                        {% if loggedIn == false %}
+                        <label class="form-label" for="new-link-name">Link name</label>
+                        <input class="form-control" id="new-link-name" name="new-link-name" value="Link URL" type="text"
+                            readonly>
+                        {% else %}
+                        <label class="form-label" for="new-link-name">New link name</label>
+                        <input class="form-control" id="new-link-name" name="new-link-name" type="text">
+                        <label class="form-label" for="new-link-url">New link URL</label>
+                        <input class="form-control" id="new-link-url" name="new-link-url" type="url">
+                        <input class="btn btn-primary mb-2 rounded-0" name="new-link" type="submit"
+                            value="Add new link">
+                        {% endif %}
+                    </fieldset>
+                </div>
                     <div class="form-group pb-1">
                         <label for="datasetType" class="form-label">Dataset type</label>
                         {% if loggedIn == false %}
@@ -49,6 +68,7 @@ nav: Datasets
                             <option selected disabled>Please choose an option</option>
                             <option>dataset</option>
                             <option>reference</option>
+                            <option>system</option>
                         </select>
                         {% endif %}
                     </div>
@@ -60,6 +80,7 @@ nav: Datasets
                         <textarea class="form-control" id="description" rows="5"></textarea>
                         {% endif %}
                     </div>
+                    {% if loggedIn == true %}
                     <div class="form-group pb-1">
                         <label for="input">Input datasets</label>
                         {% if loggedIn == false %}
@@ -72,11 +93,12 @@ nav: Datasets
                             class="btn btn-primary rounded-0 mb-2 mt-2">Add/edit input datasets</a>
                         {% endif %}
                     </div>
+                    {% endif %}
                     <div class="form-group">
                         <label for="datasetID">Dataset ID</label>
                         <input id="datasetID" type="text" class="form-control" readonly>
                     </div>
-                <h2 class="pb-3">Ownership</h2>
+                    <h2 class="pb-3">Ownership</h2>
                     <div class="form-group pb-1">
                         <label for="inputOwner">Owner</label>
                         {% if loggedIn == false %}
@@ -101,14 +123,14 @@ nav: Datasets
                         <input id="contactEmail" type="text" class="form-control">
                         {% endif %}
                     </div>
-                <h2 class="pb-3">Usage</h2>
+                    <!-- <h2 class="pb-3">Usage</h2>
                     <div class="form-group">
                         <label for="licence">Licence</label>
                         {% if loggedIn == false %}
                         <div class="form-group pb-1">
                             <input id="licence" type="text" class="form-control" readonly>
                         </div>
-                        {% else %}   
+                        {% else %}
                         <select class="form-control" id="licence">
                             <option selected disabled>Please choose an option</option>
                             <option>http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</option>
@@ -118,16 +140,16 @@ nav: Datasets
                             <option>https://choosealicense.com/licenses/mit/</option>
                         </select>
                         {% endif %}
-                    </div>
-                    <div class="form-group pb-1">
+                    </div> -->
+                    <!-- <div class="form-group pb-1">
                         <label for="pia" class="form-label">Contains Personally identifiable information</label>
                         {% if loggedIn == false %}
                         <input id="pia" type="text" class="form-control" readonly>
                         {% else %}
                         <input id="pia" type="text" class="form-control">
                         {% endif %}
-                    </div>
-                    <div class="form-group pb-1">
+                    </div> -->
+                    <!-- <div class="form-group pb-1">
                         <label for="published" class="form-label">Published</label>
                         {% if loggedIn == false %}
                         <input id="published" type="text" class="form-control" readonly>
@@ -142,23 +164,154 @@ nav: Datasets
                         {% else %}
                         <input id="objective" type="text" class="form-control">
                         {% endif %}
+                    </div> -->
+
+
+                    <!-- new GDPR section -->
+                    <h2 class="pb-3">GDPR reporting information</h2>
+                    <h3>Personal data</h3>
+                    <div class="form-group">
+                        <label for="pia">Contains personal data</label>
+                        {% if loggedIn == false %}
+                        <div class="form-group pb-1">
+                            <input id="pia" type="text" class="form-control" readonly>
+                        </div>
+                        {% else %}
+                        <select class="form-control" id="pia">
+                            <option selected disabled>Please choose an option</option>
+                            <option>Yes, personal</option>
+                            <option>Yes, personal sensitive</option>
+                            <option>No</option>
+                        </select>
+                        {% endif %}
                     </div>
+                    <div class="form-group">
+                        <label for="licence">Where personal data present, EA are:</label>
+                        {% if loggedIn == false %}
+                        <div class="form-group pb-1">
+                            <input id="licence" type="text" class="form-control" readonly>
+                        </div>
+                        {% else %}
+                        <select class="form-control" id="licence">
+                            <option selected disabled>Please choose an option</option>
+                            <option>Controller</option>
+                            <option>Joint controller</option>
+                            <option>Processor</option>
+                        </select>
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="contactNamePI" class="form-label">Contact name (Joint Controllers and/or
+                            Processers)</label>
+                        {% if loggedIn == false %}
+                        <input id="contactNamePI" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="contactNamePI" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="contactEmailPI" class="form-label">Contact email (Joint Controllers and/or
+                            Processers)</label>
+                        {% if loggedIn == false %}
+                        <input id="contactEmailPI" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="contactEmailPI" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <h3>Data storage and use</h3>
+                    <div class="form-group">
+                        <label for="licence">Is data stored outside the EEA?</label>
+                        {% if loggedIn == false %}
+                        <div class="form-group pb-1">
+                            <input id="eea-storage" type="text" class="form-control" readonly>
+                        </div>
+                        {% else %}
+                        <select class="form-control" id="licence">
+                            <option selected disabled>Please choose an option</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="linkToAgreement" class="form-label">If yes, link to agreement</label>
+                        {% if loggedIn == false %}
+                        <input id="linkToAgreement" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="linkToAgreement" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="linkToAgreement" class="form-label">Link to Processing Agreement (where
+                            applicable)</label>
+                        {% if loggedIn == false %}
+                        <input id="linkToAgreement" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="linkToAgreement" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="linkToAgreement" class="form-label">Number of individuals included in the
+                            data</label>
+                        {% if loggedIn == false %}
+                        <input id="linkToAgreement" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="linkToAgreement" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="linkToAgreement" class="form-label">Link to Retention Schedule</label>
+                        {% if loggedIn == false %}
+                        <input id="linkToAgreement" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="linkToAgreement" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="licence">Security classification</label>
+                        {% if loggedIn == false %}
+                        <div class="form-group pb-1">
+                            <input id="eea-storage" type="text" class="form-control" readonly>
+                        </div>
+                        {% else %}
+                        <select class="form-control" id="licence">
+                            <option selected disabled>Please choose an option</option>
+                            <option>TBD</option>
+                        </select>
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="linkToAgreement" class="form-label">Third Party data supply (link to
+                            document)</label>
+                        {% if loggedIn == false %}
+                        <input id="linkToAgreement" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="linkToAgreement" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+
+                    <!-- new GDPR section ends-->
+
                     {% if loggedIn == true %}
-                    <a role="button" href="../" class="btn btn-primary mb-2 btn-lg rounded-0">Save and publish</a> <a class="p-3"
-                        href="../">Cancel</a>
+                    <a role="button" href="../" class="btn btn-primary mb-2 btn-lg rounded-0">Save and publish</a> <a
+                        class="p-3" href="../">Cancel</a>
                     {% endif %}
                 </form>
-                <h2 class="pb-3">Further information</h2>
-                <p>Please note: The following data is not entered but is calculated or inferred from other data or connections within DFM</p>
-                <h3>Dataset connections (example)</h3>
+                {% if loggedIn == false %}
+                <!-- <h2 class="pb-3">Further information</h2>
+                <p>Please note: The following data is not entered but is calculated or inferred from other data or
+                    connections within DFM</p> -->
+                <h2>Dataset connections (example)</h2>
+                <!-- <h3>Dataset connections (example)</h3> -->
                 <svg id="diagram" width="1000" height="300">
                 </svg>
-                {%- for item in queries.oneDataset -%}
+                <!-- {%- for item in queries.oneDataset -%}
                 <h3>
                     {{item.name}}
                 </h3>
                 <div class="p-3 mb-2 bg-light text-dark" style="height: 100px"><br>{query results go here}</div>
-                {%- endfor -%}
+                {%- endfor -%} -->
+                {% endif %}
             </div>
         </div>
     </div>
@@ -184,19 +337,19 @@ nav: Datasets
                 document.getElementById("datasetID").value = dataset.datasetID
                 document.getElementById("datasetTitle").value = dataset.datasetName
                 document.getElementById("inputOwner").value = dataset.ownerName
-                document.getElementById("input").value = dataset.uses
+                // document.getElementById("input").value = dataset.uses
                 document.getElementById("licence").value = dataset.licence
                 document.getElementById("datasetType").value = dataset.datasetType
                 document.getElementById("contactName").value = dataset.contactName
                 document.getElementById("contactEmail").value = dataset.contactEmail
-                document.getElementById("published").value = dataset.published
-                document.getElementById("link").value = dataset.link
+                // document.getElementById("published").value = dataset.published
+                // document.getElementById("link").value = dataset.link
                 document.getElementById("description").value = dataset.description
                 document.getElementById("metadataCatalogueReference").value = dataset.metadataCatalogueReference
-                document.getElementById("objective").value = dataset.objective
+                // document.getElementById("objective").value = dataset.objective
                 document.getElementById("updateDate").innerHTML = "Last updated: " + dataset.updateDate
                 if (dataset.pia === "y") {
-                    document.getElementById("pia").value = "Yes"
+                    document.getElementById("pia").value = "Yes, personal"
                 } else {
                     document.getElementById("pia").value = "No"
                 }
@@ -242,8 +395,8 @@ nav: Datasets
     const padding = 15;
     const textPadding = 20;
     const outputDistance = 540;
-    const thisDataset = (outputDistance)/2;
-    const thisDatasetHeight = (Math.min(countOfInput,countOfOutput)/2)*boxHeight
+    const thisDataset = (outputDistance) / 2;
+    const thisDatasetHeight = (Math.min(countOfInput, countOfOutput) / 2) * boxHeight
     const boxColour = "#e9ecef";
     const linkColour = "stroke:rgb(0,0,0)";
     const textColour = "";
@@ -255,47 +408,56 @@ nav: Datasets
     let inputSVGDetail = ""
     let outputSVGDetail = ""
 
-    let x = boxXGap + thisDataset ;
+    let x = boxXGap + thisDataset;
     let y = boxYGap + thisDatasetHeight;
     let textX = boxXGap + textPadding + thisDataset;
     let textY = boxYGap + textPadding + thisDatasetHeight;
-    thisDatasetSVGDetail =  
-            "<rect x='"+ x +"' y='"+ y +"' width='"+ boxWidth +"' height='"+ boxHeight +"' stroke='"+boxStroke+"' stroke-width='"+boxStrokeWidth+"' fill='"+boxColour+"' />" +
-            "<text x='"+ textX +"' y='"+ textY +"' fill='"+textColour+"'> "+ dataset +" </text>" 
+    thisDatasetSVGDetail =
+        "<rect x='" + x + "' y='" + y + "' width='" + boxWidth + "' height='" + boxHeight + "' stroke='" + boxStroke +
+        "' stroke-width='" + boxStrokeWidth + "' fill='" + boxColour + "' />" +
+        "<text x='" + textX + "' y='" + textY + "' fill='" + textColour + "'> " + dataset + " </text>"
 
-    for (i=0; i<countOfInput; i++){
-        let x = boxXGap ;
+    for (i = 0; i < countOfInput; i++) {
+        let x = boxXGap;
         let y = boxYGap + ((boxHeight + padding) * i);
         let width = boxWidth
         let height = boxHeight
         let textX = boxXGap + textPadding
         let textY = (boxYGap + textPadding) + ((boxHeight + padding) * i);
         let lineX1 = boxWidth + boxYGap
-        let lineX2 = boxHeight/2 + boxYGap + ((boxHeight + padding) * i);
+        let lineX2 = boxHeight / 2 + boxYGap + ((boxHeight + padding) * i);
         let lineY1 = boxXGap + thisDataset;
-        let lineY2 = boxHeight/2 + boxYGap + thisDatasetHeight;
-        inputSVGDetail = inputSVGDetail + 
-            "<a href='/datasets/dataset/?id="+ datasetInput[i].name +"&new='><rect x='"+ x +"' y='"+ y +"' width='"+ width +"' height='"+ height +"' stroke='"+boxStroke+"' stroke-width='"+boxStrokeWidth+"' fill='"+boxColour+"' /></a>" +
-            "<a href='/datasets/dataset/?id="+ datasetInput[i].name +"&new='><text x='"+ textX +"' y='"+ textY +"' fill='"+textColour+"'> "+ datasetInput[i].name +" </text></a>" +
-            "<line x1='" + lineX1 + "' y1='" + lineX2 + "' x2='" + lineY1 + "' y2='" + lineY2 + "' style='"+linkColour+";stroke-width:2' />"
+        let lineY2 = boxHeight / 2 + boxYGap + thisDatasetHeight;
+        inputSVGDetail = inputSVGDetail +
+            "<a href='/datasets/dataset/?id=" + datasetInput[i].name + "&new='><rect x='" + x + "' y='" + y +
+            "' width='" + width + "' height='" + height + "' stroke='" + boxStroke + "' stroke-width='" +
+            boxStrokeWidth + "' fill='" + boxColour + "' /></a>" +
+            "<a href='/datasets/dataset/?id=" + datasetInput[i].name + "&new='><text x='" + textX + "' y='" + textY +
+            "' fill='" + textColour + "'> " + datasetInput[i].name + " </text></a>" +
+            "<line x1='" + lineX1 + "' y1='" + lineX2 + "' x2='" + lineY1 + "' y2='" + lineY2 + "' style='" +
+            linkColour + ";stroke-width:2' />"
     }
 
-    for (i=0; i<countOfOutput; i++){
-        let x = boxXGap  + outputDistance;
+    for (i = 0; i < countOfOutput; i++) {
+        let x = boxXGap + outputDistance;
         let y = boxYGap + ((boxHeight + padding) * i);
         let width = boxWidth
         let height = boxHeight
-        let textX = boxXGap + textPadding +  + outputDistance
+        let textX = boxXGap + textPadding + +outputDistance
         let textY = (boxYGap + textPadding) + ((boxHeight + padding) * i);
         let lineX1 = boxXGap + thisDataset + boxWidth;
-        let lineX2 = boxHeight/2 + boxYGap  + thisDatasetHeight;
+        let lineX2 = boxHeight / 2 + boxYGap + thisDatasetHeight;
         let lineY1 = x;
-        let lineY2 = boxHeight/2 + boxYGap + ((boxHeight + padding) * i);
-        outputSVGDetail = outputSVGDetail + 
-            "<a href='/datasets/dataset/?id="+ datasetOutput[i].name +"&new='><rect x='"+ x +"' y='"+ y +"' width='"+ width +"' height='"+ height +"' stroke='"+boxStroke+"' stroke-width='"+boxStrokeWidth+"' fill='"+boxColour+"' /></a>" +
-            "<a href='/datasets/dataset/?id="+ datasetOutput[i].name +"&new='><text x='"+ textX +"' y='"+ textY +"' fill='"+textColour+"'> "+ datasetOutput[i].name +" </text></a>" +
-           "<line x1='" + lineX1 + "' y1='" + lineX2 + "' x2='" + lineY1 + "' y2='" + lineY2 + "' style='"+linkColour+";stroke-width:2' />"
-   }
+        let lineY2 = boxHeight / 2 + boxYGap + ((boxHeight + padding) * i);
+        outputSVGDetail = outputSVGDetail +
+            "<a href='/datasets/dataset/?id=" + datasetOutput[i].name + "&new='><rect x='" + x + "' y='" + y +
+            "' width='" + width + "' height='" + height + "' stroke='" + boxStroke + "' stroke-width='" +
+            boxStrokeWidth + "' fill='" + boxColour + "' /></a>" +
+            "<a href='/datasets/dataset/?id=" + datasetOutput[i].name + "&new='><text x='" + textX + "' y='" + textY +
+            "' fill='" + textColour + "'> " + datasetOutput[i].name + " </text></a>" +
+            "<line x1='" + lineX1 + "' y1='" + lineX2 + "' x2='" + lineY1 + "' y2='" + lineY2 + "' style='" +
+            linkColour + ";stroke-width:2' />"
+    }
 
     document.getElementById('diagram').innerHTML = inputSVGDetail + thisDatasetSVGDetail + outputSVGDetail
 </script>
