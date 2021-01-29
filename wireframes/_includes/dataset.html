@@ -43,22 +43,22 @@ nav: Datasets
                         {% endif %}
                     </div> -->
                     <div class="form-group pb-1">
-                    <fieldset>
-                        <legend>Related links</legend>
-                        {% if loggedIn == false %}
-                        <label class="form-label" for="new-link-name">Link name</label>
-                        <input class="form-control" id="new-link-name" name="new-link-name" value="Link URL" type="text"
-                            readonly>
-                        {% else %}
-                        <label class="form-label" for="new-link-name">New link name</label>
-                        <input class="form-control" id="new-link-name" name="new-link-name" type="text">
-                        <label class="form-label" for="new-link-url">New link URL</label>
-                        <input class="form-control" id="new-link-url" name="new-link-url" type="url">
-                        <input class="btn btn-primary mb-2 rounded-0" name="new-link" type="submit"
-                            value="Add new link">
-                        {% endif %}
-                    </fieldset>
-                </div>
+                        <fieldset>
+                            <legend>Related links</legend>
+                            {% if loggedIn == false %}
+                            <label class="form-label" for="new-link-name">Link name</label>
+                            <input class="form-control" id="new-link-name" name="new-link-name" value="Link URL"
+                                type="text" readonly>
+                            {% else %}
+                            <label class="form-label" for="new-link-name">New link name</label>
+                            <input class="form-control" id="new-link-name" name="new-link-name" type="text">
+                            <label class="form-label" for="new-link-url">New link URL</label>
+                            <input class="form-control" id="new-link-url" name="new-link-url" type="url">
+                            <input class="btn btn-primary mb-2 rounded-0" name="new-link" type="submit"
+                                value="Add new link">
+                            {% endif %}
+                        </fieldset>
+                    </div>
                     <div class="form-group pb-1">
                         <label for="datasetType" class="form-label">Dataset type</label>
                         {% if loggedIn == false %}
@@ -201,26 +201,93 @@ nav: Datasets
                         {% endif %}
                     </div>
                     <div class="form-group pb-1">
-                        <label for="contactNamePI" class="form-label">Contact name (Joint Controllers and/or
-                            Processers)</label>
+                        <label for="contactNameJC" class="form-label">If EA are Joint Controller, enter contact name</label>
                         {% if loggedIn == false %}
-                        <input id="contactNamePI" type="text" class="form-control" readonly>
+                        <input id="contactNameJC" type="text" class="form-control" readonly>
                         {% else %}
-                        <input id="contactNamePI" type="text" class="form-control">
+                        <input id="contactNameJC" type="text" class="form-control">
                         {% endif %}
                     </div>
                     <div class="form-group pb-1">
-                        <label for="contactEmailPI" class="form-label">Contact email (Joint Controllers and/or
-                            Processers)</label>
+                        <label for="contactEmailJC" class="form-label">If EA are Joint Controller, enter contact email</label>
                         {% if loggedIn == false %}
-                        <input id="contactEmailPI" type="text" class="form-control" readonly>
+                        <input id="contactEmailJC" type="text" class="form-control" readonly>
                         {% else %}
-                        <input id="contactEmailPI" type="text" class="form-control">
+                        <input id="contactEmailJC" type="text" class="form-control">
                         {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <h4>Categories of Personal Data</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Category
+                                    </th>
+                                    <th id="included">
+                                        Included in this dataset
+                                    </th>
+                                    <th id="external_sources">
+                                        Collected from external sources
+                                    </th>
+                                    <th id="comment_header">
+                                        More details
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%- for item in categories-of-personal-data -%}
+                                <tr>
+                                    <th>
+                                    {{item.category}}
+                                    </th>
+                                    <td>
+                                        <input aria-describedby="included" type="checkbox" />
+                                    </td>
+                                    <td>
+                                        <input aria-describedby="external_sources" type="checkbox" />
+                                    </td>
+                                    <td>
+                                        <textarea aria-describedby="comment_header"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    {%- endfor -%}
+                            </tbody>
+                        </table>
                     </div>
                     <h3>Data storage and use</h3>
                     <div class="form-group">
-                        <label for="licence">Is data stored outside the EEA?</label>
+                        <label for="licence">Is data stored outside the UK?</label>
+                        {% if loggedIn == false %}
+                        <div class="form-group pb-1">
+                            <input id="eea-storage" type="text" class="form-control" readonly>
+                        </div>
+                        {% else %}
+                        <select class="form-control" id="licence">
+                            <option selected disabled>Please choose an option</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="licence">If yes, which country?</label>
+                        {% if loggedIn == false %}
+                        <div class="form-group pb-1">
+                            <input id="eea-storage" type="text" class="form-control" readonly>
+                        </div>
+                        {% else %}
+                        <select class="form-control" id="licence">
+                            <option selected disabled>Please choose an option</option>
+                        {%- for item in countries -%}
+                            <option>{{item.name}}</option>
+                            {% endfor %}
+                        </select>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="licence">Are you using data processing?</label>
                         {% if loggedIn == false %}
                         <div class="form-group pb-1">
                             <input id="eea-storage" type="text" class="form-control" readonly>
@@ -234,33 +301,7 @@ nav: Datasets
                         {% endif %}
                     </div>
                     <div class="form-group pb-1">
-                        <label for="linkToAgreement" class="form-label">If yes, link to agreement</label>
-                        {% if loggedIn == false %}
-                        <input id="linkToAgreement" type="text" class="form-control" readonly>
-                        {% else %}
-                        <input id="linkToAgreement" type="text" class="form-control">
-                        {% endif %}
-                    </div>
-                    <div class="form-group pb-1">
-                        <label for="linkToAgreement" class="form-label">Link to Processing Agreement (where
-                            applicable)</label>
-                        {% if loggedIn == false %}
-                        <input id="linkToAgreement" type="text" class="form-control" readonly>
-                        {% else %}
-                        <input id="linkToAgreement" type="text" class="form-control">
-                        {% endif %}
-                    </div>
-                    <div class="form-group pb-1">
-                        <label for="linkToAgreement" class="form-label">Number of individuals included in the
-                            data</label>
-                        {% if loggedIn == false %}
-                        <input id="linkToAgreement" type="text" class="form-control" readonly>
-                        {% else %}
-                        <input id="linkToAgreement" type="text" class="form-control">
-                        {% endif %}
-                    </div>
-                    <div class="form-group pb-1">
-                        <label for="linkToAgreement" class="form-label">Link to Retention Schedule</label>
+                        <label for="linkToAgreement" class="form-label">If yes, link to Processing Agreement</label>
                         {% if loggedIn == false %}
                         <input id="linkToAgreement" type="text" class="form-control" readonly>
                         {% else %}
@@ -281,6 +322,15 @@ nav: Datasets
                         {% endif %}
                     </div>
                     <div class="form-group pb-1">
+                        <label for="linkToAgreement" class="form-label">Retention Schedule (link to
+                            document)</label>
+                        {% if loggedIn == false %}
+                        <input id="linkToAgreement" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="linkToAgreement" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
                         <label for="linkToAgreement" class="form-label">Third Party data supply (link to
                             document)</label>
                         {% if loggedIn == false %}
@@ -289,6 +339,7 @@ nav: Datasets
                         <input id="linkToAgreement" type="text" class="form-control">
                         {% endif %}
                     </div>
+
 
                     <!-- new GDPR section ends-->
 

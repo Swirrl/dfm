@@ -1,0 +1,46 @@
+[{
+        "category": "Application/Permit/Licence Details"
+    },
+    {
+        "category": "Biographic Information (lifestyle, appearance, actions/inactions)"
+    },
+    {
+        "category": "Contact details"
+    },
+    {
+        "category": "Date of birth"
+    },
+    {
+        "category": "Employment, Education and Training"
+    },
+    {
+        "category": "Financial Details"
+    },
+    {
+        "category": "Name"
+    },
+    {
+        "category": "Criminal and Legal Proceedings, Outcomes and Sentences"
+    },
+    {
+        "category": "Offences (including Alleged)"
+    },
+    {
+        "category": "Health Information"
+    },
+    {
+        "category": "Racial or Ethnic Origin"
+    },
+    {
+        "category": "Religious or Other Beliefs"
+    },
+    {
+        "category": "Political Opinions"
+    },
+    {
+        "category": "Sexual Life"
+    },
+    {
+        "category": "Trade Union Membership"
+    }
+]
