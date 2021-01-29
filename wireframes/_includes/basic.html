@@ -26,13 +26,12 @@
 </head>
 
 <body>
-
-    {%- include header.html -%}
-
+    {% include skip-link.html %}
+    {% include cookie-banner.html %}
+    {% include header.html %}
     {{ content }}
-
-    {%- include footer.html -%}
-
+    
+    {% include footer.html %}
 </body>
 
 </html>
