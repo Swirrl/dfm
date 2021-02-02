@@ -19,11 +19,11 @@ nav: Datasets
                     <input id='search' type="text" onkeyup="filterList('datasetList')" class="form-control form-control-lg" placeholder="Search for a dataset" autocomplete="off">
                 </div>
             </div>
-            <div class="col-md-3 offset-md-1">
+            <!-- <div class="col-md-3 offset-md-1">
                 {% if loggedIn == true %}
                 <a class="btn btn-primary btn-lg mb-2" href="dataset?id=">Create new dataset</a>
                 {% endif %}
-            </div>
+            </div> -->
         </div>
         <ul id="datasetList" class="list-group list-group-flush">
             {%- for item in datasets -%}
