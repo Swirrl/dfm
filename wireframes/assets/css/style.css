@@ -322,6 +322,10 @@ a.dsp-home-link:focus{
 @media (min-width: 992px) {
     #navMenu li {
         border-bottom: none; /* Hide border on larger screens */
+        margin-left: 1.6rem;
+    }
+    #navMenu li:first-child {
+        margin-left: 0;
     }
 }
 

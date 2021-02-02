@@ -160,13 +160,13 @@
                 <nav class="col-12 col-lg-7">
                     <ul id="navMenu" class="list-unstyled d-lg-flex mb-0 justify-content-lg-end pt-3 pt-lg-0" aria-label="Application Navigation">
                         {%- for item in menu.main -%}
-                        <li class="mr-lg-3">
+                        <li>
                             <a href="{% if loggedIn == true %}/authenticated{% endif %}{{item.url}}" class="text-white py-2 py-lg-0 d-flex" {% if nav==item.name %}aria-current="page" {% endif %}>{{item.name}}</a>
                         </li>
                         {%- endfor -%}
                         {% if loggedIn == true %}
                         {%- for item in menu.loggedIn -%}
-                        <li class="mr-lg-3">
+                        <li>
                             <a href="/authenticated{{item.url}}" class="text-white py-2 py-lg-0 d-flex" {% if nav==item.name %}aria-current="page" {% endif %}>{{item.name}}</a>
                         </li>
                         {%- endfor -%}
@@ -174,12 +174,12 @@
 
                         {% if loggedIn == false %}
                         {%- for item in menu.login -%}
-                        <li class="mr-lg-3">
+                        <li>
                             <a href="{{item.url}}" class="text-white py-2 py-lg-0 d-flex" {% if nav==item.name %}aria-current="page" {% endif %}>{{item.name}}</a>
                         </li>
                         {%- endfor -%}
                         {% else %}
-                        <li class="mr-lg-3"><a href="/" class="text-white py-2 py-lg-0 d-flex">{{site.user}} (logout)</a></li>
+                        <li><a href="/" class="text-white py-2 py-lg-0 d-flex">{{site.user}} (logout)</a></li>
                         {% endif %}
                     </ul>
                 </nav>
