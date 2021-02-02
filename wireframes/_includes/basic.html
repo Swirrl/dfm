@@ -26,12 +26,14 @@
 </head>
 
 <body>
+    <script>document.documentElement.className = "js"</script>
     {% include skip-link.html %}
     {% include cookie-banner.html %}
     {% include header.html %}
     {{ content }}
     
     {% include footer.html %}
+    <script src="/assets/js/menu.js"></script>
 </body>
 
 </html>
