@@ -26,13 +26,14 @@
 </head>
 
 <body>
-
-    {%- include header.html -%}
-
+    <script>document.documentElement.className = "js"</script>
+    {% include skip-link.html %}
+    {% include cookie-banner.html %}
+    {% include header.html %}
     {{ content }}
-
-    {%- include footer.html -%}
-
+    
+    {% include footer.html %}
+    {% if nav != "Home" %}<script src="/assets/js/menu.js"></script>{% endif %}
 </body>
 
 </html>

@@ -4,7 +4,7 @@ loggedIn: false
 title: Components
 ---
 
-<main role="main" id="content">
+<main role="main" id="content" tabindex="-1">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mt-5">
@@ -16,8 +16,6 @@ title: Components
                     <li>Add input dataset</li>
                     <li>Form labels and inputs must be associated</li>
                     <li>Multiple owner pattern</li>
-                    <li>Footer text needs to be darker to meet contrast standards</li>
-                    
                 </ul>
                 <br>
                 <hr>
@@ -29,7 +27,7 @@ title: Components
                     <li><a href="add-input-dataset/step-3" class="text-decoration-underline">Step 3</a></li>
                     <li><a href="add-input-dataset/step-4" class="text-decoration-underline">Step 4</a></li>
                 </ul>
-                
+
                 <br>
                 <hr>
                 <br>
@@ -52,15 +50,6 @@ title: Components
                     <label class="form-label" for="owner-2">Owner 2</label>
                     <input class="form-control" id="owner-2" name="catherine-fileman-wright" readonly="" type="text" value="Catherine Fileman-Wright (Director)">
                 </div>
-                <br>
-                <hr>
-                <br>
-                <h2>Footer text needs to be darker to meet contrast standards</h2>
-                <p>Text and links in footer should be <code>{{ tokens.textSecondary }}</code>.</p>
-                {% include footer.html %}
-                <br>
-                <hr>
-                <br>
 
             </div>
         </div>

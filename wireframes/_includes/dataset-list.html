@@ -4,11 +4,11 @@ title: Datasets
 nav: Datasets
 ---
 
-<main role="main" id="content">
+<main role="main" id="content" tabindex="-1">
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-4 font-weight-bold">Data flow mapping</h1>
-            <p class="lead">Find {% if loggedIn == true %}or create {% endif %}a dataset</p>
+            <p class="lead">Find {% if loggedIn == true %}or create {% endif %}a dataset.</p>
         </div>
     </div>
     <div class="container">
@@ -16,13 +16,12 @@ nav: Datasets
             <div class="col-md-8">
                 <div class="input-group mb-3">
                     <label for="search" class="sr-only">Search</label>
-                    <input id='search' type="text" onkeyup="filterList('datasetList')"
-                        class="form-control form-control-lg" placeholder="Search for a dataset" autocomplete="off">
+                    <input id='search' type="text" onkeyup="filterList('datasetList')" class="form-control form-control-lg" placeholder="Search for a dataset" autocomplete="off">
                 </div>
             </div>
             <!-- <div class="col-md-3 offset-md-1">
                 {% if loggedIn == true %}
-                <a class="btn btn-primary mb-2 btn-lg rounded-0" href="dataset?id=">Create new dataset</a>
+                <a class="btn btn-primary btn-lg mb-2" href="dataset?id=">Create new dataset</a>
                 {% endif %}
             </div> -->
         </div>

@@ -4,12 +4,11 @@ title: Dataset
 nav: Datasets
 ---
 
-<main role="main" id="content">
+<main role="main" id="content" tabindex="-1">
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-4 font-weight-bold" id="mainTitle">Dataset</h1>
-            <p><span id="updateDate">Last updated: 14/05/2020</span> by Rob Chambers (<a id="previous"
-                    href="previous">previous versions</a>)</p>
+            <p><span id="updateDate">Last updated: 14/05/2020</span> by Rob Chambers (<a id="previous" href="previous" class="text-decoration-underline">previous versions</a>).</p>
         </div>
     </div>
     <div class="container">
@@ -90,7 +89,7 @@ nav: Datasets
                         {% endif %}
                         {% if loggedIn == true %}
                         <a role="button" id="dependencies" href="dependencies/"
-                            class="btn btn-primary rounded-0 mb-2 mt-2">Add/edit input datasets</a>
+                            class="btn btn-primary mb-2 mt-2">Add/edit input datasets</a>
                         {% endif %}
                     </div>
                     {% endif %}
@@ -345,8 +344,7 @@ nav: Datasets
                     <!-- new GDPR section ends-->
 
                     {% if loggedIn == true %}
-                    <a role="button" href="../" class="btn btn-primary mb-2 btn-lg rounded-0">Save and publish</a> <a
-                        class="p-3" href="../">Cancel</a>
+                    <a role="button" href="../" class="btn btn-primary mb-2 btn-lg">Save and publish</a> <a class="p-3 text-decoration-underline" href="../">Cancel</a>
                     {% endif %}
                 </form>
                 {% if loggedIn == false %}

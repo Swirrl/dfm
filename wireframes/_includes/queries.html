@@ -4,12 +4,12 @@ title: Query data flow mappings
 nav: Queries
 ---
 
-<main role="main" id="content">
+<main role="main" id="content" tabindex="-1">
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-4 font-weight-bold">Query data flow mappings</h1>
             <p class="lead">Run {% if loggedIn == true %}or create {% endif %}a query on a single dataset or all
-                datasets</p>
+                datasets.</p>
         </div>
     </div>
     <div class="container">
@@ -17,13 +17,12 @@ nav: Queries
             <div class="col-md-8">
                 <div class="input-group mb-3">
                     <label for="search" class="sr-only">Search</label>
-                    <input id='search' type="text" onkeyup="filterList('queryList')"
-                        class="form-control form-control-lg" placeholder="Search for a dataset" autocomplete="off">
+                    <input id='search' type="text" onkeyup="filterList('queryList')" class="form-control form-control-lg" placeholder="Search for a dataset" autocomplete="off">
                 </div>
             </div>
             <!-- <div class="col-md-3 offset-md-1">
                 {% if loggedIn == true %}
-                <a class="btn btn-primary mb-2 btn-lg rounded-0" href="dataset?id=">Create new query</a>
+                <a class="btn btn-primary mb-2 btn-lg" href="dataset?id=">Create new query</a>
                 {% endif %}
             </div> -->
         </div>
