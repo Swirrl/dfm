@@ -1,0 +1,91 @@
+---
+layout: basic
+title: Dataset
+nav: Datasets
+---
+
+<main role="main" id="content" tabindex="-1">
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-4 font-weight-bold" id="mainTitle">Details for {dataset} category of {category}</h1>
+            <!-- <p><span id="updateDate">Last updated: 14/05/2020</span> by Rob Chambers (<a id="previous" href="previous"
+                    class="text-decoration-underline">previous versions</a>).</p> -->
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <form>
+                    <div class="form-group pb-1">
+                        <p>Categories of personal data and individuals whose personal data is processed:</p>
+                        {%- for item in gdpr.categories -%}
+                        <div>
+                            <input id="{{item.category}" aria-describedby="category of {{item.category}}"
+                                type="checkbox" />
+                            <label style="display:inline" for="{{item.category}}">{{item.category}}</label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <label for="externalSources">Is data collected from external sources?</label>
+                        {% if loggedIn == false %}
+                        <div class="form-group pb-1">
+                            <input id="eea-storage" type="text" class="form-control" readonly>
+                        </div>
+                        {% else %}
+                        <select class="form-control" id="externalSources">
+                            <option selected disabled>Please choose an option</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="retentionPeriod">How long will personal data be retained?</label>
+                        {% if loggedIn == false %}
+                        <div class="form-group pb-1">
+                            <input id="eea-storage" type="text" class="form-control" readonly>
+                        </div>
+                        {% else %}
+                        <select class="form-control" id="retentionPeriod">
+                            <option selected disabled>Please choose an option</option>
+                            {%- for item in gdpr.retention-period -%}
+                            <option>{{item.period}}</option>
+                            {% endfor %}
+                        </select>
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="additionalDetails" class="form-label">Any additional details:</label>
+                        {% if loggedIn == false %}
+                        <textarea class="form-control" id="additionalDetails" rows="5" readonly></textarea>
+                        {% else %}
+                        <textarea class="form-control" id="additionalDetails" rows="5"></textarea>
+                        {% endif %}
+                    </div>
+
+                    {% if loggedIn == true %}
+                    <a role="button" id="save" href="../" class="btn btn-primary mb-2 btn-lg">Save and return</a> <a
+                        class="p-3 text-decoration-underline" id="cancel" href="../">Cancel</a>
+                    {% else %}
+                    <a class="p-3 text-decoration-underline" id="back" href="../">Back</a>
+                    {% endif %}
+                </form>
+            </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</main>
+
+<script>
+    let URL = window.location.href
+    let parameters = URL.split("?")[1]
+    let category = parameters.split("#")[0]
+    let anchor = parameters.split("#")[1]
+
+    document.getElementById("mainTitle").innerHTML = "Additional details for Personal Data category: "+ decodeURI(category)
+    document.getElementById("save").href = "../?id=example1&new=#" + anchor
+    document.getElementById("cancel").href = "../?id=example1&new=#" + anchor
+    document.getElementById("back").href = "../?id=example1&new=#" + anchor
+</script>

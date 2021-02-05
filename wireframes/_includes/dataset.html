@@ -8,7 +8,8 @@ nav: Datasets
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-4 font-weight-bold" id="mainTitle">Dataset</h1>
-            <p><span id="updateDate">Last updated: 14/05/2020</span> by Rob Chambers (<a id="previous" href="previous" class="text-decoration-underline">previous versions</a>).</p>
+            <p><span id="updateDate">Last updated: 14/05/2020</span> by Rob Chambers (<a id="previous" href="previous"
+                    class="text-decoration-underline">previous versions</a>).</p>
         </div>
     </div>
     <div class="container">
@@ -164,14 +165,25 @@ nav: Datasets
                         <input id="objective" type="text" class="form-control">
                         {% endif %}
                     </div> -->
-
+                    <div class="form-group">
+                        <label for="licence">Security classification</label>
+                        {% if loggedIn == false %}
+                        <div class="form-group pb-1">
+                            <input id="eea-storage" type="text" class="form-control" readonly>
+                        </div>
+                        {% else %}
+                        <select class="form-control" id="licence">
+                            <option selected disabled>Please choose an option</option>
+                            <option>TBD</option>
+                        </select>
+                        {% endif %}
+                    </div>
 
                     <!-- new GDPR section -->
                     <h2 class="pb-3">GDPR reporting information</h2>
-                    <p>For any questions on completing this section please contact <a href="mailto:insert@email.here">insert@email.here</a></p>
                     <h3>Personal data</h3>
                     <div class="form-group">
-                        <label for="pia">Contains personal data</label>
+                        <label for="pia">Does the system/dataset contain personal data?</label>
                         {% if loggedIn == false %}
                         <div class="form-group pb-1">
                             <input id="pia" type="text" class="form-control" readonly>
@@ -179,14 +191,17 @@ nav: Datasets
                         {% else %}
                         <select class="form-control" id="pia">
                             <option selected disabled>Please choose an option</option>
-                            <option>Yes, personal</option>
-                            <option>Yes, personal sensitive</option>
+                            <option>Yes</option>
                             <option>No</option>
                         </select>
                         {% endif %}
                     </div>
+                    <p><strong>If no, you do not need to complete any more of the personal data section</strong></p>
+                    <p>If you have any queries about how to complete this contact your custodian or the <a
+                            href="mailto:insert@email.here">Data Protection team</a></p>
+
                     <div class="form-group">
-                        <label for="licence">Where personal data present, EA are:</label>
+                        <label for="licence">Is the EA a:</label>
                         {% if loggedIn == false %}
                         <div class="form-group pb-1">
                             <input id="licence" type="text" class="form-control" readonly>
@@ -194,100 +209,32 @@ nav: Datasets
                         {% else %}
                         <select class="form-control" id="licence">
                             <option selected disabled>Please choose an option</option>
-                            <option>Controller</option>
-                            <option>Joint controller</option>
+                            <option>Controller (sole)</option>
+                            <option>Controller (joint)</option>
                             <option>Processor</option>
                         </select>
                         {% endif %}
                     </div>
                     <div class="form-group pb-1">
-                        <label for="contactNameJC" class="form-label">If EA are Joint Controller, enter contact name</label>
-                        {% if loggedIn == false %}
-                        <input id="contactNameJC" type="text" class="form-control" readonly>
-                        {% else %}
-                        <input id="contactNameJC" type="text" class="form-control">
-                        {% endif %}
-                    </div>
-                    <div class="form-group pb-1">
-                        <label for="contactEmailJC" class="form-label">If EA are Joint Controller, enter contact email</label>
+                        If the EA is a joint controller or processor, add the name(s) and contact details of the (other)
+                        controller organisation(s):
+                        <label for="contactNameJC" class="form-label">Name</label>
                         {% if loggedIn == false %}
                         <input id="contactEmailJC" type="text" class="form-control" readonly>
                         {% else %}
                         <input id="contactEmailJC" type="text" class="form-control">
-                        {% endif %}
-                    </div>
-                    <div class="form-group pb-1">
-                        <h4>Categories of Personal Data</h4>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Category
-                                    </th>
-                                    <th id="included">
-                                        Included in this dataset
-                                    </th>
-                                    <th id="external_sources">
-                                        Collected from external sources
-                                    </th>
-                                    <th id="comment_header">
-                                        More details
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {%- for item in categories-of-personal-data -%}
-                                <tr>
-                                    <th>
-                                    {{item.category}}
-                                    </th>
-                                    <td>
-                                        <input aria-describedby="included" type="checkbox" />
-                                    </td>
-                                    <td>
-                                        <input aria-describedby="external_sources" type="checkbox" />
-                                    </td>
-                                    <td>
-                                        <textarea aria-describedby="comment_header"></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    {%- endfor -%}
-                            </tbody>
-                        </table>
-                    </div>
-                    <h3>Data storage and use</h3>
-                    <div class="form-group">
-                        <label for="licence">Is data stored outside the UK?</label>
+                        <label for="contactEmailJC" class="form-label">Contact details</label>
                         {% if loggedIn == false %}
-                        <div class="form-group pb-1">
-                            <input id="eea-storage" type="text" class="form-control" readonly>
-                        </div>
+                        <textarea class="form-control" id="description" rows="5" readonly></textarea>
                         {% else %}
-                        <select class="form-control" id="licence">
-                            <option selected disabled>Please choose an option</option>
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select>
+                        <textarea class="form-control" id="description" rows="5"></textarea>
+                        {% endif %}
+                        <input class="btn btn-primary mb-2 rounded-0" name="new-link" type="submit"
+                            value="Add new contact">
                         {% endif %}
                     </div>
                     <div class="form-group">
-                        <label for="licence">If yes, which country?</label>
-                        {% if loggedIn == false %}
-                        <div class="form-group pb-1">
-                            <input id="eea-storage" type="text" class="form-control" readonly>
-                        </div>
-                        {% else %}
-                        <select class="form-control" id="licence">
-                            <option selected disabled>Please choose an option</option>
-                        {%- for item in countries -%}
-                            <option>{{item.name}}</option>
-                            {% endfor %}
-                        </select>
-                        {% endif %}
-                    </div>
-                    <div class="form-group">
-                        <label for="licence">Are you using data processing?</label>
+                        <label for="licence">Are you using a data processor?</label>
                         {% if loggedIn == false %}
                         <div class="form-group pb-1">
                             <input id="eea-storage" type="text" class="form-control" readonly>
@@ -308,8 +255,101 @@ nav: Datasets
                         <input id="linkToAgreement" type="text" class="form-control">
                         {% endif %}
                     </div>
+                    <div class="form-group pb-1">
+                        <label for="linkToAgreement" class="form-label">Provide a link to the privacy notice provided to
+                            data subjects:</label>
+                        {% if loggedIn == false %}
+                        <input id="linkToAgreement" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="linkToAgreement" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <p>What is the purpose or purposes for processing the personal data (this should be described in
+                            more detail in the privacy notice you provide to data subjects):</p>
+                        {%- for item in gdpr.purposes -%}
+                        <div>
+                            <input id="{{item.purpose}}" aria-describedby="purpose of processing {{item.purpose}}"
+                                type="checkbox" />
+                            <label style="display:inline" for="{{item.purpose}}">{{item.purpose}}</label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="Categories of Personal Data" class="form-group pb-1">
+                        <h4>Categories of Personal Data</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Category
+                                    </th>
+                                    <th id="included">
+                                        Included in this dataset
+                                    </th>
+                                    <th>
+                                        Is yes please provide details
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%- for item in gdpr.categories-of-personal-data -%}
+                                <tr>
+                                    <td>
+                                        {{item.category}}
+                                    </td>
+                                    <td>
+                                        <input aria-describedby="included" type="checkbox" />
+                                    </td>
+                                    <td>
+                                        {% if loggedIn == false %}
+                                        <a href = "personal-details?{{item.category}}#Categories of Personal Data">View additional details</a>
+                                        {% else %}
+                                        <a href = "personal-details?{{item.category}}#Categories of Personal Data">Add additional details</a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                    {%- endfor -%}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="datasetTitle" class="form-label">Is there a Data Protection Impact Assessment (DPIA) to cover this processing?<br>
+                            <small>If unsure contact your Exec custodian. If you have included any of the categories of personal data in blue or green above a DPIA is required.</small></label>
+                        {% if loggedIn == false %}
+                        <input id="datasetTitle" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="datasetTitle" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <label for="datasetTitle" class="form-label">If yes, please provide link</label>
+                        {% if loggedIn == false %}
+                        <input id="datasetTitle" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="datasetTitle" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <h3>Data storage and use</h3>
+                    <div class="form-group pb-1">
+                        <label for="datasetTitle" class="form-label">Will the personal data be shared with any other parties</label>
+                        {% if loggedIn == false %}
+                        <input id="datasetTitle" type="text" class="form-control" readonly>
+                        {% else %}
+                        <input id="datasetTitle" type="text" class="form-control">
+                        {% endif %}
+                    </div>
+                    <div class="form-group pb-1">
+                        <p>If yes, which categories of recipients will the information be shared with?</p>
+                        {%- for item in gdpr.categories-recipients -%}
+                        <div>
+                            <input id="recipients-{{item.recipients}}" aria-describedby="categories of recipients of {{item.recipients}}"
+                                type="checkbox" />
+                            <label style="display:inline" for="{{item.recipients}}">{{item.recipients}}</label>
+                        </div>
+                        {% endfor %}
+                    </div>
                     <div class="form-group">
-                        <label for="licence">Security classification</label>
+                        <label for="licence">Will the personal data be stored or transferred outside the UK?</label>
                         {% if loggedIn == false %}
                         <div class="form-group pb-1">
                             <input id="eea-storage" type="text" class="form-control" readonly>
@@ -317,12 +357,28 @@ nav: Datasets
                         {% else %}
                         <select class="form-control" id="licence">
                             <option selected disabled>Please choose an option</option>
-                            <option>TBD</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="licence">If yes, please state which country:</label>
+                        {% if loggedIn == false %}
+                        <div class="form-group pb-1">
+                            <input id="eea-storage" type="text" class="form-control" readonly>
+                        </div>
+                        {% else %}
+                        <select class="form-control" id="licence">
+                            <option selected disabled>Please choose an option</option>
+                            {%- for item in countries -%}
+                            <option>{{item.name}}</option>
+                            {% endfor %}
                         </select>
                         {% endif %}
                     </div>
                     <div class="form-group pb-1">
-                        <label for="linkToAgreement" class="form-label">Retention Schedule (link to
+                        <label for="linkToAgreement" class="form-label">If yes, please add Third Party data supply agreement (link to
                             document)</label>
                         {% if loggedIn == false %}
                         <input id="linkToAgreement" type="text" class="form-control" readonly>
@@ -330,21 +386,12 @@ nav: Datasets
                         <input id="linkToAgreement" type="text" class="form-control">
                         {% endif %}
                     </div>
-                    <div class="form-group pb-1">
-                        <label for="linkToAgreement" class="form-label">Third Party data supply (link to
-                            document)</label>
-                        {% if loggedIn == false %}
-                        <input id="linkToAgreement" type="text" class="form-control" readonly>
-                        {% else %}
-                        <input id="linkToAgreement" type="text" class="form-control">
-                        {% endif %}
-                    </div>
-
 
                     <!-- new GDPR section ends-->
 
                     {% if loggedIn == true %}
-                    <a role="button" href="../" class="btn btn-primary mb-2 btn-lg">Save and publish</a> <a class="p-3 text-decoration-underline" href="../">Cancel</a>
+                    <a role="button" href="../" class="btn btn-primary mb-2 btn-lg">Save and publish</a> <a
+                        class="p-3 text-decoration-underline" href="../">Cancel</a>
                     {% endif %}
                 </form>
                 {% if loggedIn == false %}

@@ -1,0 +1,208 @@
+{
+    "categories-of-personal-data": [{
+            "category": "Name"
+        },
+        {
+            "category": "Contact details"
+        },
+        {
+            "category": "Date of birth"
+        },
+        {
+            "category": "Biographic Information (lifestyle, appearance, actions/inactions)"
+        },
+        {
+            "category": "Financial Details"
+        },
+        {
+            "category": "Application/Permit/Licence Details"
+        },
+        {
+            "category": "Employment, Education and Training"
+        },
+        {
+            "category": "Criminal and Legal Proceedings, Outcomes and Sentences"
+        },
+        {
+            "category": "Offences (including Alleged)"
+        },
+        {
+            "category": "Health Information (including mental health and disability)"
+        },
+        {
+            "category": "Racial or Ethnic Origin"
+        },
+        {
+            "category": "Religious or Other Beliefs"
+        },
+        {
+            "category": "Political Opinions"
+        },
+        {
+            "category": "Sexuality or sexual life"
+        },
+        {
+            "category": "Trade Union Membership"
+        }
+    ],
+    "categories": [{
+            "category": "Application/Permit/Licence"
+        },
+        {
+            "category": "Employees"
+        },
+        {
+            "category": "People that we regulate"
+        },
+        {
+            "category": "Unsuccessful job applicants"
+        },
+        {
+            "category": "Contractor/consultants"
+        },
+        {
+            "category": "Students"
+        },
+        {
+            "category": "Witnesses"
+        },
+        {
+            "category": "Offenders"
+        },
+        {
+            "category": "Suspected offenders"
+        },
+        {
+            "category": "Members of public/customers"
+        },
+        {
+            "category": "Children (under 13)"
+        }
+    ],
+    "purposes": [{
+            "purpose": "Application/Permit/Licence Details"
+        },
+        {
+            "purpose": "Climate change and emissions trading"
+        },
+        {
+            "purpose": "Complaints and commendations and enquiries (customer service)"
+        },
+        {
+            "purpose": "Conservation, navigation and recreation"
+        },
+        {
+            "purpose": "Employment"
+        },
+        {
+            "purpose": "Enforcement"
+        },
+        {
+            "purpose": "Environmental permitting"
+        },
+        {
+            "purpose": "Equality, diversity and inclusion"
+        },
+        {
+            "purpose": "Fisheries"
+        },
+        {
+            "purpose": "Flood and coastal risk management"
+        },
+        {
+            "purpose": "Incident management"
+        },
+        {
+            "purpose": "Information law"
+        },
+        {
+            "purpose": "Industrial Pollution Prevention and Control and regulation"
+        },
+        {
+            "purpose": "Health, Safety and Wellbeing"
+        },
+        {
+            "purpose": "Land quality"
+        },
+        {
+            "purpose": "Planning"
+        },
+        {
+            "purpose": "Property"
+        },
+        {
+            "purpose": "Radioactive substances"
+        },
+        {
+            "purpose": "Recruitment"
+        },
+        {
+            "purpose": "Reservoirs"
+        },
+        {
+            "purpose": "Substance control"
+        },
+        {
+            "purpose": "Waste"
+        },
+        {
+            "purpose": "Water quality"
+        },
+        {
+            "purpose": "Water resources"
+        },
+        {
+            "purpose": "Other legal obligation"
+        },
+        {
+            "purpose": "Other Environment Agency public task/official role"
+        }
+    ],
+    "categories-recipients": [{
+            "recipients": "Other Environment Agency public task/official role"
+        },
+        {
+            "recipients": "Processor (you have a contract with another party to process personal data on our behalf)"
+        },
+        {
+            "recipients": "Financial organisations (credit reference, debt collection and tracing agencies)"
+        },
+        {
+            "recipients": "Police forces"
+        },
+        {
+            "recipients": "Prosecuting authorities, courts"
+        },
+        {
+            "recipients": "Other ombudsman and regulatory authorities"
+        },
+        {
+            "recipients": "Government bodies (eg. HMRC, Local Authority)"
+        },
+        {
+            "recipients": "Service providers"
+        },
+        {
+            "recipients": "Current, past or prospective employers and examining bodies"
+        }
+    ],
+    "retention-period": [{
+            "period": "Current only (until superseded)"
+        },
+        {
+            "period": "1 year"
+        },
+        {
+            "period": "3 years"
+        },
+        {
+            "period": "7 years"
+        },
+        {
+            "period": "20 years"
+        },
+        {
+            "period": "Other"
+        }
+    ]
+}
