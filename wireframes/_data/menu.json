@@ -8,7 +8,10 @@
             "url": "/queries"
         }
     ],
-    "loggedIn": [],
+    "loggedIn": [        {
+        "name": "Users",
+        "url": "/users"
+    }],
     "login": [{
         "name": "Login",
         "url": "/auth0"
