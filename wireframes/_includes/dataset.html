@@ -14,11 +14,22 @@ nav: Datasets
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
-                <h2 class="pb-3">About this dataset</h2>
+            <div class="col-lg-9">
+                <div class="bg-light p-4 d-md-inline-flex mb-5">
+                    <p id="nav-page-sections-title" class="font-weight-bold mr-3 mb-0">On this page:</p>
+                    <div role="navigation" aria-labelledby="nav-page-sections-title">
+                        <ul class="list-unstyled d-md-inline-flex mb-0">
+                            <li class="mr-md-3"><a href="#aboutThisDataset" class="text-decoration-underline">About this dataset</a></li>
+                            <li class="mr-md-3"><a href="#ownership" class="text-decoration-underline">Ownership</a></li>
+                            <li class="mr-md-3"><a href="#gdprReportingInformation" class="text-decoration-underline">GDPR reporting information</a></li>
+                            {% if loggedIn == false %}<li><a href="#furtherInformation" class="text-decoration-underline">Further information</a></li>{% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <h2 id="aboutThisDataset" class="pb-3">About this dataset</h2>
                 <form>
                     <div class="form-group pb-1">
-                        <label for="datasetTitle" class="form-label">Dataset title</label>
+                        <label for="datasetTitle" class="form-label">Title</label>
                         {% if loggedIn == false %}
                         <input id="datasetTitle" type="text" class="form-control" readonly>
                         {% else %}
@@ -60,7 +71,7 @@ nav: Datasets
                         </fieldset>
                     </div>
                     <div class="form-group pb-1">
-                        <label for="datasetType" class="form-label">Dataset type</label>
+                        <label for="datasetType" class="form-label">Type</label>
                         {% if loggedIn == false %}
                         <input id="datasetType" type="text" class="form-control" readonly>
                         {% else %}
@@ -82,7 +93,7 @@ nav: Datasets
                     </div>
                     {% if loggedIn == true %}
                     <div class="form-group pb-1">
-                        <label for="input">Input datasets</label>
+                        <label for="input">Add a link to any datasets or systems this entry is dependent on:</label>
                         {% if loggedIn == false %}
                         <input id="input" type="text" class="form-control" readonly>
                         {% else %}
@@ -90,15 +101,15 @@ nav: Datasets
                         {% endif %}
                         {% if loggedIn == true %}
                         <a role="button" id="dependencies" href="dependencies/"
-                            class="btn btn-primary mb-2 mt-2">Add/edit input datasets</a>
+                            class="btn btn-primary mb-2 mt-2">Add/edit inputs</a>
                         {% endif %}
                     </div>
                     {% endif %}
                     <div class="form-group">
-                        <label for="datasetID">Dataset ID</label>
+                        <label for="datasetID">Unique ID</label>
                         <input id="datasetID" type="text" class="form-control" readonly>
                     </div>
-                    <h2 class="pb-3">Ownership</h2>
+                    <h2 id="ownership" class="pb-3">Ownership</h2>
                     <div class="form-group pb-1">
                         <label for="inputOwner">Owner</label>
                         {% if loggedIn == false %}
@@ -180,7 +191,7 @@ nav: Datasets
                     </div>
 
                     <!-- new GDPR section -->
-                    <h2 class="pb-3">GDPR reporting information</h2>
+                    <h2 id="gdprReportingInformation" class="pb-3">GDPR reporting information</h2>
                     <h3>Personal data</h3>
                     <div class="form-group">
                         <label for="pia">Does the system/dataset contain personal data?</label>
@@ -196,18 +207,19 @@ nav: Datasets
                         </select>
                         {% endif %}
                     </div>
+                    {% if loggedIn == true %}
                     <p><strong>If no, you do not need to complete any more of the personal data section</strong></p>
                     <p>If you have any queries about how to complete this contact your custodian or the <a
                             href="mailto:insert@email.here">Data Protection team</a></p>
-
+                    {% endif %}
                     <div class="form-group">
-                        <label for="licence">Is the EA a:</label>
+                        <label for="isTheEA">Is the EA a:</label>
                         {% if loggedIn == false %}
                         <div class="form-group pb-1">
-                            <input id="licence" type="text" class="form-control" readonly>
+                            <input id="isTheEA" type="text" class="form-control" readonly>
                         </div>
                         {% else %}
-                        <select class="form-control" id="licence">
+                        <select class="form-control" id="isTheEA">
                             <option selected disabled>Please choose an option</option>
                             <option>Controller (sole)</option>
                             <option>Controller (joint)</option>
@@ -395,19 +407,19 @@ nav: Datasets
                     {% endif %}
                 </form>
                 {% if loggedIn == false %}
-                <!-- <h2 class="pb-3">Further information</h2>
+                <h2 id="furtherInformation" class="pb-3">Further information</h2>
                 <p>Please note: The following data is not entered but is calculated or inferred from other data or
-                    connections within DFM</p> -->
+                    connections within DFM</p>
                 <h2>Dataset connections (example)</h2>
                 <!-- <h3>Dataset connections (example)</h3> -->
                 <svg id="diagram" width="1000" height="300">
                 </svg>
-                <!-- {%- for item in queries.oneDataset -%}
+                {%- for item in queries.oneDataset -%}
                 <h3>
                     {{item.name}}
                 </h3>
                 <div class="p-3 mb-2 bg-light text-dark" style="height: 100px"><br>{query results go here}</div>
-                {%- endfor -%} -->
+                {%- endfor -%}
                 {% endif %}
             </div>
         </div>
